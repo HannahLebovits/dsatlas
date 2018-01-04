@@ -1,0 +1,2176 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Birmingham Democratic Socialists of America",
+        "city": "Birmingham",
+        "state": "AL",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -86.81176, 33.52068 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Alabama Democratic Socialists of America",
+        "city": "Huntsville",
+        "state": "AL",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -86.5851, 34.72929 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mobile Democratic Socialists of America",
+        "city": "Mobile",
+        "state": "AL",
+        "members": 8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -88.05297, 30.68648 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tuscaloosa Democratic Socialists of America",
+        "city": "Tuscaloosa",
+        "state": "AL",
+        "members": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -87.56625, 33.21042 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anchorage Democratic Socialists of America",
+        "city": "Anchorage",
+        "state": "AK",
+        "members": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -149.85825, 61.21753 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Juneau (SE AL) Democratic Socialists of America",
+        "city": "Juneau",
+        "state": "AK",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -134.40679, 58.29973 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Phoenix Democratic Socialists of America",
+        "city": "Phoenix",
+        "state": "AZ",
+        "members": 109
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -112.0758, 33.44825 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tuscon Democratic Socialists of America",
+        "city": "Tuscon",
+        "state": "AZ",
+        "members": 34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -110.96976, 32.22155 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yuma Democratic Socialists of America",
+        "city": "Yuma",
+        "state": "AZ",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -114.62461, 32.68485 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arkansas Democratic Socialists of America",
+        "city": "Little Rock",
+        "state": "AR",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -92.27485, 34.7487 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Bay Democratic Socialists of America",
+        "city": "Oakland",
+        "state": "CA",
+        "members": 850
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.27307, 37.80508 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Peninsula Democratic Socialists of America",
+        "city": "Burlingame",
+        "state": "CA",
+        "members": 57
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.35067, 37.58025 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fresno Democratic Socialists of America",
+        "city": "Fresno",
+        "state": "CA",
+        "members": 26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -119.78576, 36.74066 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Orange County Democratic Socialists of America",
+        "city": "Orange",
+        "state": "CA",
+        "members": 200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -117.85071, 33.78787 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Long Beach Democratic Socialists of America",
+        "city": "Long Beach",
+        "state": "CA",
+        "members": 119
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -118.1924, 33.76672 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Los Angeles Democratic Socialists of America",
+        "city": "Los Angeles",
+        "state": "CA",
+        "members": 1200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -118.24532, 34.05349 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ventura County Democratic Socialists of America",
+        "city": "Oxnard",
+        "state": "CA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -119.18012, 34.20034 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Bay Democratic Socialists of America",
+        "city": "San Jose",
+        "state": "CA",
+        "members": 380
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -121.88542, 37.33865 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Inland Empire Democratic Socialists of America",
+        "city": "Riverside",
+        "state": "CA",
+        "members": 8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -117.37404, 33.98171 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sacramento Democratic Socialists of America",
+        "city": "Sacramento",
+        "state": "CA",
+        "members": 350
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -121.4909, 38.57933 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Diego Democratic Socialists of America",
+        "city": "San Diego",
+        "state": "CA",
+        "members": 280
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -117.16171, 32.71568 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Francisco Democratic Socialists of America",
+        "city": "San Francisco",
+        "state": "CA",
+        "members": 600
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.41964, 37.77712 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Santa Barbara Democratic Socialists of America",
+        "city": "Santa Barbara",
+        "state": "CA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -119.69905, 34.41938 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Santa Cruz Democratic Socialists of America",
+        "city": "Santa Cruz",
+        "state": "CA",
+        "members": 78
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.03095, 36.97406 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Bay Democratic Socialists of America",
+        "city": "Santa Rosa",
+        "state": "CA",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.71244, 38.4379 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boulder Democratic Socialists of America",
+        "city": "Boulder",
+        "state": "CO",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -105.27924, 40.01574 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Colorado Springs Democratic Socialists of America",
+        "city": "Colorado Springs",
+        "state": "CO",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -104.82181, 38.83348 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Denver Democratic Socialists of America",
+        "city": "Denver",
+        "state": "CO",
+        "members": 250
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -104.99202, 39.74001 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fort Collins Democratic Socialists of America",
+        "city": "Fort Collins",
+        "state": "CO",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -105.07626, 40.58147 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "La Plata County Democratic Socialists of America",
+        "city": "Durango",
+        "state": "CO",
+        "members": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -107.8793, 37.27367 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Connecticut Democratic Socialists of America",
+        "city": "New Haven",
+        "state": "CT",
+        "members": 150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -72.92462, 41.30762 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Connecticut Democratic Socialists of America",
+        "city": "New Milford",
+        "state": "CT",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.41051, 41.57763 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Quiet Corner Democratic Socialists of America",
+        "city": "Storrs",
+        "state": "CT",
+        "members": 18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -72.24993, 41.80855 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro DC Democratic Socialists of America",
+        "city": "Washington",
+        "state": "DC",
+        "members": 1200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -77.03196, 38.89037 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Daytona Beach Democratic Socialists of America",
+        "city": "Daytona Beach",
+        "state": "FL",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.0394, 29.20357 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Florida Democratic Socialists of America",
+        "city": "Gainesville",
+        "state": "FL",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -82.32278, 29.65195 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jacksonville Democratic Socialists of America",
+        "city": "Jacksonville",
+        "state": "FL",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.65622, 30.33147 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Miami Democratic Socialists of America",
+        "city": "Miami",
+        "state": "FL",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.19773, 25.77481 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Orlando Democratic Socialists of America",
+        "city": "Orlando",
+        "state": "FL",
+        "members": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.37739, 28.53823 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tampa Democratic Socialists of America",
+        "city": "Tampa",
+        "state": "FL",
+        "members": 65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -82.45927, 27.94653 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Broward Democratic Socialists of America",
+        "city": "Ft. Lauderdale",
+        "state": "FL",
+        "members": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.14356, 26.12367 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tallahassee Democratic Socialists of America",
+        "city": "Tallahassee",
+        "state": "FL",
+        "members": 60
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -84.28065, 30.43977 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Palm Beach Democratic Socialists of America",
+        "city": "Palm Beach",
+        "state": "FL",
+        "members": 16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.03661, 26.70288 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Atlanta Democratic Socialists of America",
+        "city": "Atlanta",
+        "state": "GA",
+        "members": 500
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -84.39111, 33.74831 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Honolulu Democratic Socialists of America",
+        "city": "Honolulu",
+        "state": "HI",
+        "members": 75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -157.85788, 21.30493 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Palouse Democratic Socialists of America",
+        "city": "Moscow",
+        "state": "ID",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -117.00038, 46.73235 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boise Democratic Socialists of America",
+        "city": "Boise",
+        "state": "ID",
+        "members": 14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -116.1934, 43.60761 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bloomington-Normal Democratic Socialists of America",
+        "city": "Bloomington",
+        "state": "IL",
+        "members": 6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -88.99772, 40.48535 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Champaign-Urbana Democratic Socialists of America",
+        "city": "Champaign",
+        "state": "IL",
+        "members": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -88.2435, 40.1142 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chicago Democratic Socialists of America",
+        "city": "Chicago",
+        "state": "IL",
+        "members": 1100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -87.63245, 41.88425 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Quad Cities Democratic Socialists of America",
+        "city": "Rock Island",
+        "state": "IL",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -90.57604, 41.51157 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Suburban IL Democratic Socialists of America",
+        "city": "Glen Ellyn",
+        "state": "IL",
+        "members": 210
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -88.06573, 41.87546 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northern IL Democratic Socialists of America",
+        "city": "Rochelle",
+        "state": "IL",
+        "members": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -89.06835, 41.93237 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sangamon Democratic Socialists of America",
+        "city": "Sangamon",
+        "state": "IL",
+        "members": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -88.85576, 39.86621 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southern IN Democratic Socialists of America",
+        "city": "Evansville",
+        "state": "IN",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -87.56405, 37.97708 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central IN Democratic Socialists of America",
+        "city": "Indianapolis",
+        "state": "IN",
+        "members": 160
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -86.14996, 39.76691 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northern IN Democratic Socialists of America",
+        "city": "South Bend",
+        "state": "IN",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -86.25405, 41.67907 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heart of Iowa Democratic Socialists of America",
+        "city": "Ames",
+        "state": "IA",
+        "members": 26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -93.6202, 42.02534 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iowa City Democratic Socialists of America",
+        "city": "Iowa City",
+        "state": "IA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -91.52653, 41.65782 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Iowa Democratic Socialists of America",
+        "city": "Des Moines",
+        "state": "IA",
+        "members": 60
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -93.61565, 41.58976 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dubuque Democratic Socialists of America",
+        "city": "Dubuque",
+        "state": "IA",
+        "members": 38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -90.66327, 42.49913 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cedar Rapids Democratic Socialists of America",
+        "city": "Cedar Rapids",
+        "state": "IA",
+        "members": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -91.67376, 41.97634 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wichita Democratic Socialists of America",
+        "city": "Wichita",
+        "state": "KS",
+        "members": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -97.33558, 37.68698 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Louisville Democratic Socialists of America",
+        "city": "Louisville",
+        "state": "KY",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -85.7664, 38.25486 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Orleans Democratic Socialists of America",
+        "city": "New Orleans",
+        "state": "LA",
+        "members": 120
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -90.07775, 29.9537 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baton Rouge Democratic Socialists of America",
+        "city": "Baton Rouge",
+        "state": "LA",
+        "members": 16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -91.18699, 30.44334 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southern Maine Democratic Socialists of America",
+        "city": "Portland",
+        "state": "ME",
+        "members": 105
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -70.25668, 43.65915 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baltimore Democratic Socialists of America",
+        "city": "Baltimore",
+        "state": "MD",
+        "members": 450
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.60926, 39.29058 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boston Democratic Socialists of America",
+        "city": "Boston",
+        "state": "MA",
+        "members": 1000
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -71.05674, 42.35866 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pioneer Valley Democratic Socialists of America",
+        "city": "Holyoke",
+        "state": "MA",
+        "members": 160
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -72.60743, 42.20696 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Shore Democratic Socialists of America",
+        "city": "Beverly",
+        "state": "MA",
+        "members": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -70.87898, 42.54774 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cape Cod Democratic Socialists of America",
+        "city": "Cape Cod",
+        "state": "MA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -70.03279, 41.70011 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Worcester Democratic Socialists of America",
+        "city": "Worcester",
+        "state": "MA",
+        "members": 26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -71.80219, 42.26341 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Huron Valley Democratic Socialists of America",
+        "city": "Ann Arbor",
+        "state": "MI",
+        "members": 150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -83.74847, 42.2821 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Detriot Democratic Socialists of America",
+        "city": "Detriot",
+        "state": "MI",
+        "members": 400
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -83.5299, 41.7337515 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grand Rapids Democratic Socialists of America",
+        "city": "Grand Rapids",
+        "state": "MI",
+        "members": 18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -85.67118, 42.96641 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lansing Democratic Socialists of America",
+        "city": "Lansing",
+        "state": "MI",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -84.55225, 42.73194 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Marquette Democratic Socialists of America",
+        "city": "Marquette",
+        "state": "MI",
+        "members": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -87.41368, 46.54584 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Twin Ports Democratic Socialists of America",
+        "city": "Duluth",
+        "state": "MN",
+        "members": 53
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -92.09985, 46.78796 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Twin Cities Democratic Socialists of America",
+        "city": "Minneapolis",
+        "state": "MN",
+        "members": 460
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -93.26494, 44.97902 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kansas City Democratic Socialists of America",
+        "city": "Kansas City",
+        "state": "MO",
+        "members": 85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -94.58311, 39.10345 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Democratic Socialists of the Ozarks",
+        "city": "Springfield",
+        "state": "MO",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -93.29156, 37.20897 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St. Louis Democratic Socialists of America",
+        "city": "St. Louis",
+        "state": "MO",
+        "members": 200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -90.19956, 38.62775 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Billings Democratic Socialists of America",
+        "city": "Billings",
+        "state": "MT",
+        "members": 23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -108.50579, 45.78397 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Helena Democratic Socialists of America",
+        "city": "Helena",
+        "state": "MT",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -112.0212, 46.58976 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Western Montana Democratic Socialists of America",
+        "city": "Missoula",
+        "state": "MT",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -113.99625, 46.87278 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Glacier Democratic Socialists of America",
+        "city": "Glacier",
+        "state": "MT",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -112.994782144, 48.704986605 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bozeman Democratic Socialists of America",
+        "city": "Bozeman",
+        "state": "MT",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -111.03222, 45.67934 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lincoln Democratic Socialists of America",
+        "city": "Lincoln",
+        "state": "NE",
+        "members": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -96.7073, 40.81362 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Omaha Democratic Socialists of America",
+        "city": "Omaha",
+        "state": "NE",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -95.94056, 41.26067 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Las Vegas Democratic Socialists of America",
+        "city": "Las Vegas",
+        "state": "NV",
+        "members": 150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -115.13997, 36.17191 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southern NH Democratic Socialists of America",
+        "city": "Manchester",
+        "state": "NH",
+        "members": 114
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -71.4631, 42.9912 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Albuquerque Democratic Socialists of America",
+        "city": "Albuquerque",
+        "state": "NM",
+        "members": 80
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -106.64905, 35.08423 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Santa Fe Democratic Socialists of America",
+        "city": "Santa Fe",
+        "state": "NM",
+        "members": 45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -105.93796, 35.69168 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Albany Democratic Socialists of America",
+        "city": "Albany",
+        "state": "NY",
+        "members": 170
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.75521, 42.65155 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hudson Valley Democratic Socialists of America",
+        "city": "Hudson Valley",
+        "state": "NY",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.9816757551, 41.9197970879 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Binghampton Democratic Socialists of America",
+        "city": "Binghampton",
+        "state": "NY",
+        "members": 14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -75.91136, 42.09869 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suffolk County Democratic Socialists of America",
+        "city": "Suffolk County",
+        "state": "NY",
+        "members": 115
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -72.858979262, 40.877328245 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Buffalo Democratic Socialists of America",
+        "city": "Buffalo",
+        "state": "NY",
+        "members": 160
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -78.87846, 42.88544 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ithaca Democratic Socialists of America",
+        "city": "Ithaca",
+        "state": "NY",
+        "members": 54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.49546, 42.44051 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New York City Democratic Socialists of America",
+        "city": "New York City",
+        "state": "NY",
+        "members": 3091
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -74.00714, 40.71455 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rochester Democratic Socialists of America",
+        "city": "Rochester",
+        "state": "NY",
+        "members": 70
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -77.61632, 43.1558 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nassau Democratic Socialists of America",
+        "city": "Nassau",
+        "state": "NY",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.61093, 42.51635 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Syracuse Democratic Socialists of America",
+        "city": "Syracuse",
+        "state": "NY",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.14738, 43.05028 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Asheville Democratic Socialists of America",
+        "city": "Asheville",
+        "state": "NC",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -82.55312, 35.59844 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlotte Democratic Socialists of America",
+        "city": "Charlotte",
+        "state": "NC",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.83796, 35.22286 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Piedmont Democratic Socialists of America",
+        "city": "Piedmont",
+        "state": "NC",
+        "members": 350
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -78.9015700261, 35.9995500255 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Red River Valley Democratic Socialists of America",
+        "city": "Fargo",
+        "state": "ND",
+        "members": 75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -96.78176, 46.87591 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Akron Democratic Socialists of America",
+        "city": "Akron",
+        "state": "OH",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.51405, 41.08421 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cincinnati-North KY Democratic Socialists of America",
+        "city": "Cincinnati",
+        "state": "OH",
+        "members": 142
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -84.45689, 39.162 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cleveland Democratic Socialists of America",
+        "city": "Cleveland",
+        "state": "OH",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.69074, 41.50473 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Columbus Democratic Socialists of America",
+        "city": "Columbus",
+        "state": "OH",
+        "members": 197
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -83.00275, 39.96199 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portage County Democratic Socialists of America",
+        "city": "Kent",
+        "state": "OH",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.35822, 41.15092 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ohio Valley Democratic Socialists of America",
+        "city": "Steubenville",
+        "state": "OH",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.63716, 40.36959 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oklahoma City Democratic Socialists of America",
+        "city": "Oklahoma City",
+        "state": "OK",
+        "members": 43
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -97.52107, 35.47203 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Green Country Democratic Socialists of America",
+        "city": "Tulsa",
+        "state": "OK",
+        "members": 35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -95.99333, 36.14974 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Oregon Democratic Socialists of America",
+        "city": "Bend",
+        "state": "OR",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -121.31555, 44.05766 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eugene Democratic Socialists of America",
+        "city": "Eugene",
+        "state": "OR",
+        "members": 85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -123.08854, 44.04992 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Portland Democratic Socialists of America",
+        "city": "Portland",
+        "state": "OR",
+        "members": 550
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.67563, 45.51179 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salem Democratic Socialists of America",
+        "city": "Salem",
+        "state": "OR",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -123.04381, 44.93326 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Steel Valley Democratic Socialists of America",
+        "city": "Aliquippa",
+        "state": "PA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -80.24595, 40.61774 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harrisburg Democratic Socialists of America",
+        "city": "Harrisburg",
+        "state": "PA",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.88223, 40.25986 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lancaster Democratic Socialists of America",
+        "city": "Lancaster",
+        "state": "PA",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.30129, 40.03805 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Philadelphia Democratic Socialists of America",
+        "city": "Philadelphia",
+        "state": "PA",
+        "members": 600
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -75.16218, 39.95222 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pittsburgh Democratic Socialists of America",
+        "city": "Pittsburgh",
+        "state": "PA",
+        "members": 420
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -79.99734, 40.43851 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Centre County Democratic Socialists of America",
+        "city": "State College",
+        "state": "PA",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -77.8607, 40.79373 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Providence Democratic Socialists of America",
+        "city": "Providence",
+        "state": "RI",
+        "members": 197
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -71.41199, 41.82387 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charleston Democratic Socialists of America",
+        "city": "Charleston",
+        "state": "SC",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -79.9316, 32.78115 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Columbia Democratic Socialists of America",
+        "city": "Columbia",
+        "state": "SC",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.04537, 33.99882 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chattanooga Democratic Socialists of America",
+        "city": "Chattanooga",
+        "state": "TN",
+        "members": 16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -85.30947, 35.04672 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Middle Tennessee Democratic Socialists of America",
+        "city": "Nashville",
+        "state": "TN",
+        "members": 160
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -86.77816, 36.16784 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Memphis-MidSouth Democratic Socialists of America",
+        "city": "Memphis",
+        "state": "TN",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -90.04925, 35.14976 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Knoxville Democratic Socialists of America",
+        "city": "Knoxville",
+        "state": "TN",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -83.92103, 35.96068 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northeast TN Democratic Socialists of America",
+        "city": "Johnson City",
+        "state": "TN",
+        "members": 29
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -82.34518, 36.32008 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Austin Democratic Socialists of America",
+        "city": "Austin",
+        "state": "TX",
+        "members": 750
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -97.74299, 30.26759 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brazos Valley Democratic Socialists of America",
+        "city": "Bryan",
+        "state": "TX",
+        "members": 29
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -96.37042, 30.67098 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "El Paso Democratic Socialists of America",
+        "city": "El Paso",
+        "state": "TX",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -106.48749, 31.75916 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Texas Democratic Socialists of America",
+        "city": "Dallas",
+        "state": "TX",
+        "members": 350
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -96.7954, 32.77815 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Houston Democratic Socialists of America",
+        "city": "Houston",
+        "state": "TX",
+        "members": 250
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -95.36968, 29.76058 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Permian Basin Democratic Socialists of America",
+        "city": "Midland",
+        "state": "TX",
+        "members": 14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -102.07446, 32.00002 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rio Grande Valley Democratic Socialists of America",
+        "city": "Edinburg",
+        "state": "TX",
+        "members": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -98.16081, 26.30118 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Antonio Democratic Socialists of America",
+        "city": "San Antonio",
+        "state": "TX",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -98.49461, 29.42458 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Provo Democratic Socialists of America",
+        "city": "Provo",
+        "state": "UT",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -111.6685, 40.2337 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salt Lake City Democratic Socialists of America",
+        "city": "Salt Lake City",
+        "state": "UT",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -111.88822, 40.76031 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southern Utah Democratic Socialists of America",
+        "city": "Saint George",
+        "state": "UT",
+        "members": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -113.58412, 37.10415 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Burlington Democratic Socialists of America",
+        "city": "Burlington",
+        "state": "VT",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.21277, 44.47593 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlottesville Democratic Socialists of America",
+        "city": "Charlottesville",
+        "state": "VA",
+        "members": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -78.47756, 38.03213 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fredricksburg Democratic Socialists of America",
+        "city": "Fredricksburg",
+        "state": "VA",
+        "members": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.585682994, 37.1510309668 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Richmond Democratic Socialists of America",
+        "city": "Richmond",
+        "state": "VA",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -77.43365, 37.5407 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tidewater Democratic Socialists of America",
+        "city": "Tidewater",
+        "state": "VA",
+        "members": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -76.69811, 37.85528 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cowlitz County Democratic Socialists of America",
+        "city": "Longview",
+        "state": "WA",
+        "members": 7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.95054, 46.14681 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Everett Democratic Socialists of America",
+        "city": "Everett",
+        "state": "WA",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.20593, 47.97659 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Olympia Democratic Socialists of America",
+        "city": "Olympia",
+        "state": "WA",
+        "members": 70
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.89136, 47.03923 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Sound Democratic Socialists of America",
+        "city": "Tacoma",
+        "state": "WA",
+        "members": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.44164, 47.25513 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seattle Democratic Socialists of America",
+        "city": "Seattle",
+        "state": "WA",
+        "members": 600
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.32945, 47.60357 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Spokane Democratic Socialists of America",
+        "city": "Spokane",
+        "state": "WA",
+        "members": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -117.41228, 47.65726 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tri-Cities Democratic Socialists of America",
+        "city": "Richland",
+        "state": "WA",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -119.27372, 46.27391 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vancouver Democratic Socialists of America",
+        "city": "Vancouver",
+        "state": "WA",
+        "members": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.67156, 45.63221 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Sound Democratic Socialists of America",
+        "city": "Bremerton",
+        "state": "WA",
+        "members": 6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -122.62747, 47.565 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whatcom Democratic Socialists of America",
+        "city": "Whatcom",
+        "state": "WA",
+        "members": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -121.717416726, 48.825596848 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kanawha Valley Democratic Socialists of America",
+        "city": "Charleston",
+        "state": "WV",
+        "members": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -81.63895, 38.35016 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Central WV Democratic Socialists of America",
+        "city": "Morgantown",
+        "state": "WV",
+        "members": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -79.95785, 39.63037 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eastern Panhandle Democratic Socialists of America",
+        "city": "Shepherdstown",
+        "state": "WV",
+        "members": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -77.80521, 39.43065 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Huntington Democratic Socialists of America",
+        "city": "Huntington",
+        "state": "WV",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -82.44546, 38.42016 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Madison Democratic Socialists of America",
+        "city": "Madison",
+        "state": "WI",
+        "members": 159
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -89.38669, 43.07295 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Milwaukee Democratic Socialists of America",
+        "city": "Milwaukee",
+        "state": "WI",
+        "members": 175
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -87.90687, 43.042 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cheyenne Democratic Socialists of America",
+        "city": "Cheyenne",
+        "state": "WY",
+        "members": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -104.82154, 41.13481 ]
+      }
+    }
+  ]
+}

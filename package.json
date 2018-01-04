@@ -1,0 +1,39 @@
+{
+  "name": "dsatlas-app",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Client code for DSAtlas",
+  "author": {
+    "name": "Chris Engelsma",
+    "email": "chris.engelsma@gmail.com",
+    "url": "http://www.dsatlas.org/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-animate": "^1.6.8",
+    "angular-sanitize": "^1.6.8",
+    "angular-simple-logger": "^0.1.7",
+    "angular-ui-bootstrap": "^2.5.6",
+    "@uirouter/angularjs": "^1.0.12",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "d3": "^4.12.2",
+    "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "leaflet": "^1.2.0",
+    "leaflet.markercluster": "^1.2.0",
+    "method-override": "^2.3.10",
+    "moment": "^2.20.1",
+    "mongoose": "^5.0.0-rc1",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  },
+  "engine": "node>=6.0.0",
+  "scripts": {
+    "lint": "jshint app/**/*.js"
+  }
+}

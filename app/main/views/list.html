@@ -1,0 +1,26 @@
+<div class="container text-center" style="padding-top: 100px;">
+  <div class="well well-sm">Note: This list is not exhaustive as numbers are self-reported and constantly being updated.</div>
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th> Links </th>
+        <th> Chapter </th>
+        <th> Location </th>
+        <th> Members </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, value) in chapters track by $index" >
+        <th class="light-th">
+          <div ng-if="value.twitter"><a href="https://twitter.com/{{value.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></div>
+          <div ng-if="value.facebook"><a href="https://facebook.com/{{value.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></div>
+          <div ng-if="value.website"><a href="{{value.website}}" target="_blank"><i class="fa fa-earth"></i></a></div>
+        </th>
+        <th class="light-th"> {{ value.name }} </th>
+        <th class="light-th"> {{ value.city }}, {{ value.state }} </th>
+        <th class="light-th"> {{ value.members > 0 ? value.members : ''}} </th>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

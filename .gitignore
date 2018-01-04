@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+*.map
+scripts/
+*.service
+.DS_Store/
