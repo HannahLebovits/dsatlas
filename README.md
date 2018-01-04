@@ -10,6 +10,9 @@
 
 ----------
 #### About
+
+http://www.dsatlas.org/
+
 DSAtlas is an interactive map of chapters for the Democratic Socialists of America
 
 ----------
