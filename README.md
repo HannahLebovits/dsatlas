@@ -5,6 +5,7 @@
 ##### Table of Contents
 * [About](#about)
 * [Installation](#installation)
+* [Contributing](#contributing)
 * [Relevant Links](#relevant-links)
 
 ----------
@@ -27,6 +28,9 @@ Once completed, open your browser and navigate to http://127.0.0.1:3000 (or http
 
 >Note: This project uses a read-only user that links to the remote Mongo server in production.
 
+#### Contributing
+
+Please make all pull requests to the develop branch. 
 
 #### Relevant Links
 
