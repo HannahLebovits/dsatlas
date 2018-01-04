@@ -107,7 +107,7 @@
           p += '<div><a href="https://facebook.com/' + d.facebook + '"><i class="fa fa-facebook"></i> ' + d.facebook + ' </a></div>';
         }
         if (d.website) {
-          p += '<div><a href="' + d.website + '"><i class="fa fa-earth"></i> ' + d.website + '</a></div>';
+          p += '<div><a href="' + d.website + '"><i class="fa fa-globe"></i> ' + d.website + '</a></div>';
         }
         p += '</div>';
 
