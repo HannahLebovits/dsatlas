@@ -101,13 +101,13 @@
           p += '<div style="display: inline-block; width: 50%; text-align: left;" >' + d.members + ' members</div>';
         }
         if (d.twitter) {
-          p += '<div><a href="https://twitter.com/' + d.twitter + '"><i class="fa fa-twitter"></i> @' + d.twitter + '</a></div>';
+          p += '<div><a href="https://twitter.com/' + d.twitter + '" target="_blank"><i class="fa fa-twitter"></i> @' + d.twitter + '</a></div>';
         }
         if (d.facebook) {
-          p += '<div><a href="https://facebook.com/' + d.facebook + '"><i class="fa fa-facebook"></i> ' + d.facebook + ' </a></div>';
+          p += '<div><a href="https://facebook.com/' + d.facebook + '" target="_blank"><i class="fa fa-facebook"></i> ' + d.facebook + ' </a></div>';
         }
         if (d.website) {
-          p += '<div><a href="' + d.website + '"><i class="fa fa-globe"></i> ' + d.website + '</a></div>';
+          p += '<div><a href="' + d.website + '" target="_blank"><i class="fa fa-globe"></i> ' + d.website + '</a></div>';
         }
         p += '</div>';
 
