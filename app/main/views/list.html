@@ -12,9 +12,19 @@
     <tbody>
       <tr ng-repeat="(key, value) in chapters track by $index" >
         <th class="light-th">
-          <div ng-if="value.twitter"><a href="https://twitter.com/{{value.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></div>
-          <div ng-if="value.facebook"><a href="https://facebook.com/{{value.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></div>
-          <div ng-if="value.website"><a href="{{value.website}}" target="_blank"><i class="fa fa-earth"></i></a></div>
+          <table class="chapter-link">
+            <tr>
+              <th class="chapter-link">
+                <div ng-if="value.twitter"><a href="https://twitter.com/{{value.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></div>
+              </th>
+              <th class="chapter-link">
+                <div ng-if="value.facebook"><a href="https://facebook.com/{{value.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></div>
+              </th>
+              <th class="chapter-link">
+                <div ng-if="value.website"><a href="{{value.website}}" target="_blank"><i class="fa fa-globe"></i></a></div>
+              </th>
+            </tr>
+          </table>
         </th>
         <th class="light-th"> {{ value.name }} </th>
         <th class="light-th"> {{ value.city }}, {{ value.state }} </th>
