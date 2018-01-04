@@ -1,4 +1,5 @@
-![DSAtlas](https://github.com/chrisengelsma/dsatlas/blob/master/assets/img/dsatlas_logo.png)
+<img width="600" src="https://rawgit.com/chrisengelsma/dsatlas/master/assets/img/dsatlas_logo.png" alt="DSAtlas" />
+
 
 ----------
 ##### Table of Contents
