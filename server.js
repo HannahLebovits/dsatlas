@@ -3,8 +3,8 @@
 // Read-only user ===============
 var mongo = {
   credentials: {
-    user: 'dsatlas-prod-r',
-    pass: 'dsatlas-prod-r',
+    user: 'dsatlas-prod-readonly',
+    pass: 'dsatlas-prod-readonly',
     host: '74.208.175.170',
     port: '27017',
     db: 'dsatlas'
