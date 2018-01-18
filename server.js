@@ -41,7 +41,7 @@ app.use(methodOverride());
 
 // application ==================
 
-var port = 3000;
+var port = 80;
 app.listen(port, function() {
   console.log('site started on port',port);
 });
@@ -69,8 +69,34 @@ var Chapter = mongoose.model('chapters', chapterSchema);
 app.get('/chapters', function(req,res,next) {
   Chapter.find({})
     .exec()
-    .then( function(chapters) { res.json(chapters); })
-    .catch(function(err) {
-      console.log('Error getting data');
-    });
+    .then(function(chapters) { res.json(chapters); })
+    .catch(function(err) { console.log('Error getting data'); });
 });
+
+app.get('/states/totals', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/state-totals.json', 'utf8', function(err, data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+app.get('/states/geojson', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/us-states.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+app.get('/counties/geojson', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/us-counties.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+app.get('/counties/totals', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/county-totals.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+})

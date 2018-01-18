@@ -1,26 +1,25 @@
 (function() {
   'use strict';
 
-  dataservice.$inject = ['$q','$http'];
+  dataservice.$inject = ['$http'];
 
-  function dataservice($q,$http) {
+  function dataservice($http) {
     var dataservice = function() {};
 
     dataservice.prototype = {
-      getChapters: function() { return get('/chapters'); }
+      getChapters: function() { return get('/chapters'); },
+      getStatesGeoJson: function() { return get('/states/geojson'); },
+      getCountiesGeoJson: function() { return get('/counties/geojson'); },
+      getStateTotals: function() { return get('/states/totals'); },
+      getCountyTotals: function() { return get('/counties/totals'); }
     };
 
     function get(endpoint) {
-      var d = $q.defer();
-      $http({
+      return $http({
         method: 'GET',
         url: endpoint,
         headers: { 'Content-Type': 'application/json' }
-      }).then(
-        function(result) { d.resolve(result); },
-        function(error)  { d.resolve(error); }
-      );
-      return d.promise;
+      });
     }
 
     return dataservice;

@@ -7,62 +7,78 @@
     return {
       restrict: 'E',
       template: '<div id="map"></div>',
-      scope: {
-        chapters: '=',
-        states: '=',
-        options: '='
-      },
+      scope: false,
       replace: true,
       link: linkFunction
     };
 
     function linkFunction(scope, element, attrs) {
 
-      var info = {};
-      var legend = {};
-      var statesTotals = {};
+      var stateInfo = {};
+      var stateLegend = {};
+
+      var countyInfo = {};
+      var countyLegend = {};
+
       var chaptersByState = {};
 
-      d3Service.d3().then(function(d3) {
+      var countyBrackets = getCountyBrackets();
+      var stateBrackets = getStateBrackets();
+      var colorValues = getColorValues();
 
+      d3Service.d3().then(function(d3) {
 
         var map = new L.Map('map', { center: [37.8, -96.9], zoom: 4});
         var tiles = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
         tiles.addTo(map);
 
+        stateInfo = makeStateInfoBox(map);
+        countyInfo = makeCountyInfoBox(map);
 
         // States
         var states = populateStates(map);
+        var counties = populateCounties(map);
         var markerClusters = populateMarkers(map);
 
         map.addLayer(states);
         map.addLayer(markerClusters);
 
-        var overlayData = {
-          "Chapter locations": markerClusters,
-          "Chapter Membership by State": states
+        states.bringToBack();
+        var multipleChoiceOverlay = {
+          "Chapter locations": markerClusters
         };
 
-        L.control.layers(null,overlayData).addTo(map);
+        var singleChoiceOverlay = {
+          "Membership by state": states,
+          "Membership by county": counties
+        };
 
+        L.control.layers(singleChoiceOverlay,multipleChoiceOverlay).addTo(map);
 
-        map.on('overlayremove', function(e) {
-          if (e.name === 'Chapter Membership by State') {
-            legend.remove(map);
-            info.remove(map);
+        stateLegend = makeLegend(map, colorValues, stateBrackets);
+        countyLegend = makeLegend(map, colorValues, countyBrackets);
+
+        stateLegend.addTo(map);
+        stateInfo.addTo(map);
+
+        map.on('baselayerchange', function(e) {
+          if (e.name === 'Membership by state') {
+            countyLegend.remove(map);
+            countyInfo.remove(map);
+
+            stateLegend.addTo(map);
+            stateInfo.addTo(map);
+            states.bringToBack();
+          } else if (e.name === 'Membership by county') {
+            stateLegend.remove(map);
+            stateInfo.remove(map);
+
+            countyLegend.addTo(map);
+            countyInfo.addTo(map);
+            counties.bringToBack();
           }
         });
 
-        map.on('overlayadd', function(e) {
-          if (e.name === 'Chapter Membership by State') {
-            legend.addTo(map);
-            info.addTo(map);
-          }
-          states.bringToBack();
-        });
-
-        legend = makeLegend(map);
-        info = makeInfoBox(map);
 
       });
 
@@ -96,34 +112,32 @@
         return p;
       };
 
-      function populateStates(map) {
 
-        getNumbersByState();
-        var statesJson = {};
-
+      function populateCounties(map) {
+        var countiesJson = {};
         function style(feature) {
           return {
-            weight: 1,
+            weight: 0,
             opacity: 0.5,
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
-            fillColor: getColor(statesTotals[feature.properties.abbr])
+            fillColor: getColor(scope.countyTotals[feature.properties['STATE'] + feature.properties['COUNTY']], countyBrackets)
           };
         }
 
         function resetHighlight(e) {
-          statesJson.resetStyle(e.target);
-          info.update();
+          countiesJson.resetStyle(e.target);
+          countyInfo.update();
         }
 
         function highlightFeature(e) {
           var layer = e.target;
           layer.setStyle({
-            fillOpacity: 1.0
+            fillOpacity: 1.0,
+            weight: 2
           });
-
-          info.update(layer.feature.properties);
+          countyInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
@@ -138,9 +152,59 @@
           })
         }
 
-        statesJson = L.geoJSON(statesData, {
+        countiesJson = L.geoJSON(scope.countiesGeoJson, {
           style: style,
-          onEachFeature: onEachFeature
+          onEachFeature: onEachFeature,
+          smoothFactor: 0.3
+        });
+
+        return countiesJson;
+      }
+
+      function populateStates(map) {
+        var statesJson = {};
+
+        function style(feature) {
+          return {
+            weight: 1,
+            opacity: 0.5,
+            color: '#333',
+            dashArray: '0',
+            fillOpacity: 0.8,
+            fillColor: getColor(scope.stateTotals[feature.properties.abbr], stateBrackets)
+          };
+        }
+
+        function resetHighlight(e) {
+          statesJson.resetStyle(e.target);
+          stateInfo.update();
+        }
+
+        function highlightFeature(e) {
+          var layer = e.target;
+          layer.setStyle({
+            fillOpacity: 1.0,
+            weight: 2
+          });
+          stateInfo.update(layer.feature.properties);
+        }
+
+        function zoomToFeature(e) {
+          map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+          layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+          })
+        }
+
+        statesJson = L.geoJSON(scope.statesGeoJson, {
+          style: style,
+          onEachFeature: onEachFeature,
+          smoothFactor: 0.3
         });
 
         return statesJson;
@@ -207,84 +271,100 @@
         return { 'min': min, 'max': max };
       }
 
-      function getNumbersByState() {
-        scope.chapters.forEach(function(chapter) {
-          statesTotals[chapter.state] = (statesTotals[chapter.state] || 0 ) + chapter.members;
-          chaptersByState[chapter.state] = (chaptersByState[chapter.state] || 0 ) + 1;
-        });
-      }
-
-      function makeInfoBox(map) {
+      function makeCountyInfoBox(map) {
         var info = L.control();
-        info.onAdd = function(map) {
+        info.onAdd = function() {
           this._div = L.DomUtil.create('div', 'info');
           this.update();
           return this._div;
         };
         info.update = function(props) {
-          this._div.innerHTML = '<h4>Chapter membership</h4>' + (props ?
-            '<b>' + props.name + '</b></br>' +
-            (statesTotals[props.abbr] || 0) + ' members</br>' +
-            (chaptersByState[props.abbr] || 0) + ' chapters</br>'
 
-            : 'Hover over a state');
+          if (props) {
+            var state = props['STATE'],
+              county = props['COUNTY'],
+              name = props['NAME'],
+              fips = state + county,
+              label = (state === '22' ? 'parish' : (state === '72' ? 'municipio' : 'county'));
+
+            this._div.innerHTML = '<h4>County Information</h4>' + (props ?
+              '<b>' + name + ' ' + label + '</b></br>' +
+              (scope.countyTotals[fips] || 0) + ' members</br>'
+              : 'Hover over a county');
+          }
         };
-        info.addTo(map);
+
         return info;
       }
 
-      function makeLegend(map) {
+      function makeStateInfoBox(map) {
+        var info = L.control();
+
+        info.onAdd = function() {
+          this._div = L.DomUtil.create('div', 'info');
+          this.update();
+          return this._div;
+        };
+
+        info.update = function(props) {
+          this._div.innerHTML = '<h4>State Information</h4>' + (props ?
+            '<b>' + props.name + '</b></br>' +
+            (scope.stateTotals[props.abbr] || 0) + ' members</br>' +
+            (scope.chaptersPerState[props.abbr] || 0) + ' chapters</br>'
+            : 'Hover over a state');
+        };
+
+        return info;
+      }
+
+      function makeLegend(map, colors, brackets) {
         var legend = L.control({ position: 'bottomright' });
 
         legend.onAdd = function(map) {
-          var div = L.DomUtil.create('div', 'info legend'),
-              brackets = getColorBrackets();
+          var div = L.DomUtil.create('div', 'info legend');
 
-          div.innerHTML = '<i style="background: ' + getColor(brackets[0]) + '"></i>' + brackets[0] + ' +</br>';
+          div.innerHTML = '<h4>Members</h4>';
+          div.innerHTML += '<i style="background: ' + getColor(brackets[0], brackets) + '"></i>' + brackets[0] + ' +</br>';
           for (var i=1; i<brackets.length-1; ++i) {
             div.innerHTML +=
-              '<i style="background: ' + getColor(brackets[i]) + '"></i>' +
+              '<i style="background: ' + getColor(brackets[i], brackets) + '"></i>' +
               brackets[i] + ' &ndash; ' + brackets[i+1] + '</br>';
           }
-          div.innerHTML += '<i style="background: ' + getColor("#333333") + '"></i>No Data</br>';
 
           return div;
         };
-
-        legend.addTo(map);
 
         return legend;
       }
 
       function getColorValues() {
         return [
-          "#f44336",
-          "#f5574c",
-          "#f66c62",
-          "#f78179",
-          "#f8968f",
-          "#faaba5",
-          "#fbc0bc",
-          "#fcd5d2",
-          "#fdeae8",
-          "#ffffff"
+          "#a50f15",
+          "#de2d26",
+          "#fb6a4a",
+          "#fcae91",
+          "#fee5d9",
+          "#ffffff",
+          "#333333"
         ];
 
       }
 
-      function getColorBrackets() {
-        return [ 900, 800, 700, 600, 500, 400, 300, 200, 100, 0 ];
+      function getStateBrackets() {
+        return [ 3000, 1000, 500, 100, 50, 1 ];
       }
 
-      function getColor(d) {
-        var colors = getColorValues();
-        var brackets = getColorBrackets();
+      function getCountyBrackets() {
+        return [ 300, 100, 50, 10, 5, 1 ];
+      }
+
+      function getColor(d, brackets) {
         for (var i=0; i<brackets.length; ++i) {
           if (d >= brackets[i]) {
-            return colors[i];
+            return colorValues[i];
           }
         }
-        return '#333333';
+        return colorValues[colorValues.length-1];
       }
     }
   }
