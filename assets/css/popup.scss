@@ -1,0 +1,12 @@
+.popup-container {
+  font-size: large;
+  .popup-body {
+    width: 100%;
+    display: block;
+    .popup-members-line {
+      display: inline-block;
+      width: 50%;
+      text-align: left;
+    }
+  }
+}

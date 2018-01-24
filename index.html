@@ -39,6 +39,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap-social/bootstrap-social.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/leaflet.markercluster/dist/MarkerCluster.css" />
@@ -68,12 +69,17 @@
 
   <script type="text/javascript" src="app/shared/dataservice.service.js"></script>
   <script type="text/javascript" src="app/shared/d3.factory.js"></script>
+
   <script type="text/javascript" src="app/main/mapView.directive.js"></script>
+
+  <script type="text/javascript" src="app/main/legend.factory.js"></script>
+  <script type="text/javascript" src="app/main/color.factory.js"></script>
+  <script type="text/javascript" src="app/main/infobox.factory.js"></script>
 
 </head>
 
 <body ng-cloak ng-app="dsatlas.app" ng-controller="AppController as vm" ng-init="vm.init()">
-  <div ui-view="main"></div>
+  <div ui-view></div>
   <div ng-include="'app/shared/views/nav.html'"></div>
 </body>
 

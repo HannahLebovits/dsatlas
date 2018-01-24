@@ -8,10 +8,13 @@
 
     dataservice.prototype = {
       getChapters: function() { return get('/chapters'); },
-      getStatesGeoJson: function() { return get('/states/geojson'); },
-      getCountiesGeoJson: function() { return get('/counties/geojson'); },
-      getStateTotals: function() { return get('/states/totals'); },
-      getCountyTotals: function() { return get('/counties/totals'); }
+      getStatesGeoJson: function() { return get('/geojson/states'); },
+      getCountiesGeoJson: function() { return get('/geojson/counties'); },
+      getDistrictsGeoJson: function() { return get('/geojson/districts'); },
+      getStateTotals: function() { return get('/totals/states'); },
+      getCountyTotals: function() { return get('/totals/counties'); },
+      getDistrictTotals: function() { return get('/totals/districts'); },
+      getStateNumberMap: function() { return get('/const/statenumbers'); }
     };
 
     function get(endpoint) {

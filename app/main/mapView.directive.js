@@ -1,30 +1,31 @@
 (function() {
   'use strict';
 
-  mapView.$inject = ['$timeout', 'd3Service'];
+  mapView.$inject = ['$timeout', '$compile', 'd3Service', 'legendFactory', 'colorFactory', 'infoBoxFactory'];
 
-  function mapView($timeout, d3Service) {
+  function mapView($timeout, $compile, d3Service, legendFactory, colorFactory, infoBoxFactory) {
     return {
       restrict: 'E',
       template: '<div id="map"></div>',
-      scope: false,
       replace: true,
       link: linkFunction
     };
 
-    function linkFunction(scope, element, attrs) {
+    function linkFunction(scope, elem, attrs) {
+      var vm = this;
 
-      var stateInfo = {};
-      var stateLegend = {};
+      vm.stateInfo = {};
+      vm.stateLegend = {};
 
-      var countyInfo = {};
-      var countyLegend = {};
+      vm.countyInfo = {};
+      vm.countyLegend = {};
 
-      var chaptersByState = {};
+      vm.districtInfo = {};
+      vm.districtLegend = {};
 
-      var countyBrackets = getCountyBrackets();
-      var stateBrackets = getStateBrackets();
-      var colorValues = getColorValues();
+      vm.countyBrackets = colorFactory.getCountyBrackets();
+      vm.stateBrackets = colorFactory.getStateBrackets();
+      vm.districtBrackets = colorFactory.getDistrictBrackets();
 
       d3Service.d3().then(function(d3) {
 
@@ -32,86 +33,130 @@
         var tiles = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
         tiles.addTo(map);
 
-        stateInfo = makeStateInfoBox(map);
-        countyInfo = makeCountyInfoBox(map);
-
-        // States
         var states = populateStates(map);
         var counties = populateCounties(map);
+        var districts = populateDistricts(map);
         var markerClusters = populateMarkers(map);
+
+        vm.stateInfo = infoBoxFactory.stateInfoBox(scope.stateTotals, scope.chaptersPerState);
+        vm.countyInfo = infoBoxFactory.countyInfoBox(scope.countyTotals);
+        vm.districtInfo = infoBoxFactory.districtInfoBox(scope.districtTotals, scope.stateNumbers);
 
         map.addLayer(states);
         map.addLayer(markerClusters);
 
         states.bringToBack();
-        var multipleChoiceOverlay = {
+
+        var overlays = {
           "Chapter locations": markerClusters
         };
 
-        var singleChoiceOverlay = {
-          "Membership by state": states,
-          "Membership by county": counties
+        var baseLayers = {
+          "States": states,
+          "Counties": counties,
+          "National Congressional Districts": districts
         };
 
-        L.control.layers(singleChoiceOverlay,multipleChoiceOverlay).addTo(map);
+        L.control.layers(baseLayers,overlays).addTo(map);
 
-        stateLegend = makeLegend(map, colorValues, stateBrackets);
-        countyLegend = makeLegend(map, colorValues, countyBrackets);
+        vm.stateLegend = legendFactory.makeLegend(map, vm.stateBrackets);
+        vm.countyLegend = legendFactory.makeLegend(map, vm.countyBrackets);
+        vm.districtLegend = legendFactory.makeLegend(map, vm.districtBrackets);
 
-        stateLegend.addTo(map);
-        stateInfo.addTo(map);
+        vm.stateLegend.addTo(map);
+        vm.stateInfo.addTo(map);
 
         map.on('baselayerchange', function(e) {
-          if (e.name === 'Membership by state') {
-            countyLegend.remove(map);
-            countyInfo.remove(map);
+          if (e.name === 'States') {
+            vm.countyLegend.remove(map);
+            vm.countyInfo.remove(map);
 
-            stateLegend.addTo(map);
-            stateInfo.addTo(map);
+            vm.districtLegend.remove(map);
+            vm.districtInfo.remove(map);
+
+            vm.stateLegend.addTo(map);
+            vm.stateInfo.addTo(map);
+
             states.bringToBack();
-          } else if (e.name === 'Membership by county') {
-            stateLegend.remove(map);
-            stateInfo.remove(map);
+          } else if (e.name === 'Counties') {
+            vm.stateLegend.remove(map);
+            vm.stateInfo.remove(map);
 
-            countyLegend.addTo(map);
-            countyInfo.addTo(map);
+            vm.districtLegend.remove(map);
+            vm.districtInfo.remove(map);
+
+            vm.countyLegend.addTo(map);
+            vm.countyInfo.addTo(map);
             counties.bringToBack();
+          } else if (e.name === 'National Congressional Districts') {
+            vm.stateLegend.remove(map);
+            vm.stateInfo.remove(map);
+
+            vm.countyLegend.remove(map);
+            vm.countyInfo.remove(map);
+
+            vm.districtLegend.addTo(map);
+            vm.districtInfo.addTo(map);
+
+            districts.bringToBack();
           }
         });
-
-
       });
 
       var radius = function(d, scalar, range, minRadius, maxClip) {
         return Math.min(maxClip, (scalar * (d.members - range.min)/(range.max - range.min)) + minRadius);
       };
 
-      // TODO move this to separate html file, add css
-      var popup = function(d) {
-        var p = '<div style="font-size: large;"><h3>' + d.name + '</h3> \
-        <div style="display: block; width: 100%;">';
-        if (d.members === 0 && !d.twitter && !d.facebook && !d.website) {
-          p += '<div class="text-right">' + d.city + ', ' + d.state + '</div>';
-        } else {
-          p += '<div class="pull-right">' + d.city + ', ' + d.state + '</div>';
-        }
-        if (d.members > 0) {
-          p += '<div style="display: inline-block; width: 50%; text-align: left;" >' + d.members + ' members</div>';
-        }
-        if (d.twitter) {
-          p += '<div><a href="https://twitter.com/' + d.twitter + '" target="_blank"><i class="fa fa-twitter"></i> @' + d.twitter + '</a></div>';
-        }
-        if (d.facebook) {
-          p += '<div><a href="https://facebook.com/' + d.facebook + '" target="_blank"><i class="fa fa-facebook"></i> ' + d.facebook + ' </a></div>';
-        }
-        if (d.website) {
-          p += '<div><a href="' + d.website + '" target="_blank"><i class="fa fa-globe"></i> ' + d.website + '</a></div>';
-        }
-        p += '</div>';
+      function populateDistricts(map) {
+        var districtsJson = {};
 
-        return p;
-      };
+        function style(feature) {
+          return {
+            weight: 0,
+            opacity: 0.5,
+            color: '#333',
+            dashArray: '0',
+            fillOpacity: 0.8,
+            fillColor: colorFactory.getColor(
+              scope.districtTotals[feature.properties['STATE'] + feature.properties['CD']], vm.districtBrackets)
+          };
+        }
 
+        function resetHighlight(e) {
+          districtsJson.resetStyle(e.target);
+          vm.countyInfo.update();
+        }
+
+        function highlightFeature(e) {
+          var layer = e.target;
+          layer.setStyle({
+            fillOpacity: 1.0,
+            weight: 2
+          });
+          vm.districtInfo.update(layer.feature.properties);
+        }
+
+        function zoomToFeature(e) {
+          map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+          layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+          })
+        }
+
+        districtsJson = L.geoJSON(scope.districtsGeoJson, {
+          style: style,
+          onEachFeature: onEachFeature,
+          smoothFactor: 0.3
+        });
+
+        return districtsJson;
+
+      }
 
       function populateCounties(map) {
         var countiesJson = {};
@@ -122,13 +167,14 @@
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
-            fillColor: getColor(scope.countyTotals[feature.properties['STATE'] + feature.properties['COUNTY']], countyBrackets)
+            fillColor: colorFactory.getColor(
+              scope.countyTotals[feature.properties['STATE'] + feature.properties['COUNTY']], vm.countyBrackets)
           };
         }
 
         function resetHighlight(e) {
           countiesJson.resetStyle(e.target);
-          countyInfo.update();
+          vm.countyInfo.update();
         }
 
         function highlightFeature(e) {
@@ -137,7 +183,7 @@
             fillOpacity: 1.0,
             weight: 2
           });
-          countyInfo.update(layer.feature.properties);
+          vm.countyInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
@@ -171,13 +217,13 @@
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
-            fillColor: getColor(scope.stateTotals[feature.properties.abbr], stateBrackets)
+            fillColor: colorFactory.getColor(scope.stateTotals[feature.properties.abbr], vm.stateBrackets)
           };
         }
 
         function resetHighlight(e) {
           statesJson.resetStyle(e.target);
-          stateInfo.update();
+          vm.stateInfo.update();
         }
 
         function highlightFeature(e) {
@@ -186,7 +232,7 @@
             fillOpacity: 1.0,
             weight: 2
           });
-          stateInfo.update(layer.feature.properties);
+          vm.stateInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
@@ -247,8 +293,8 @@
             opacity: 0.7,
             radius: radius(d,scalar,range,minRadius,clipMax)
           }).on('click', function(e) {
-            map.panTo(e.latlng, { animate: true }); })
-            .bindPopup(popup(d));
+            map.panTo(e.latlng, { animate: true });
+          }).bindPopup(popup(d));
 
           circles.push(circle);
         });
@@ -271,102 +317,36 @@
         return { 'min': min, 'max': max };
       }
 
-      function makeCountyInfoBox(map) {
-        var info = L.control();
-        info.onAdd = function() {
-          this._div = L.DomUtil.create('div', 'info');
-          this.update();
-          return this._div;
-        };
-        info.update = function(props) {
+      var popup = function(d) {
+        var p =
+          '<div class="popup-container"><h3>' + d.name + '</h3>' +
+          '<div class="popup-body">';
 
-          if (props) {
-            var state = props['STATE'],
-              county = props['COUNTY'],
-              name = props['NAME'],
-              fips = state + county,
-              label = (state === '22' ? 'parish' : (state === '72' ? 'municipio' : 'county'));
-
-            this._div.innerHTML = '<h4>County Information</h4>' + (props ?
-              '<b>' + name + ' ' + label + '</b></br>' +
-              (scope.countyTotals[fips] || 0) + ' members</br>'
-              : 'Hover over a county');
-          }
-        };
-
-        return info;
-      }
-
-      function makeStateInfoBox(map) {
-        var info = L.control();
-
-        info.onAdd = function() {
-          this._div = L.DomUtil.create('div', 'info');
-          this.update();
-          return this._div;
-        };
-
-        info.update = function(props) {
-          this._div.innerHTML = '<h4>State Information</h4>' + (props ?
-            '<b>' + props.name + '</b></br>' +
-            (scope.stateTotals[props.abbr] || 0) + ' members</br>' +
-            (scope.chaptersPerState[props.abbr] || 0) + ' chapters</br>'
-            : 'Hover over a state');
-        };
-
-        return info;
-      }
-
-      function makeLegend(map, colors, brackets) {
-        var legend = L.control({ position: 'bottomright' });
-
-        legend.onAdd = function(map) {
-          var div = L.DomUtil.create('div', 'info legend');
-
-          div.innerHTML = '<h4>Members</h4>';
-          div.innerHTML += '<i style="background: ' + getColor(brackets[0], brackets) + '"></i>' + brackets[0] + ' +</br>';
-          for (var i=1; i<brackets.length-1; ++i) {
-            div.innerHTML +=
-              '<i style="background: ' + getColor(brackets[i], brackets) + '"></i>' +
-              brackets[i] + ' &ndash; ' + brackets[i+1] + '</br>';
-          }
-
-          return div;
-        };
-
-        return legend;
-      }
-
-      function getColorValues() {
-        return [
-          "#a50f15",
-          "#de2d26",
-          "#fb6a4a",
-          "#fcae91",
-          "#fee5d9",
-          "#ffffff",
-          "#333333"
-        ];
-
-      }
-
-      function getStateBrackets() {
-        return [ 3000, 1000, 500, 100, 50, 1 ];
-      }
-
-      function getCountyBrackets() {
-        return [ 300, 100, 50, 10, 5, 1 ];
-      }
-
-      function getColor(d, brackets) {
-        for (var i=0; i<brackets.length; ++i) {
-          if (d >= brackets[i]) {
-            return colorValues[i];
-          }
+        if (d.members === 0 && !d.twitter && !d.facebook && !d.website) {
+          p += '<div class="text-right">' + d.city + ', ' + d.state + '</div>';
+        } else {
+          p += '<div class="pull-right">' + d.city + ', ' + d.state + '</div>';
         }
-        return colorValues[colorValues.length-1];
-      }
+        if (d.members > 0) {
+          p += '<div class="popup-members-line">' + d.members + ' members</div>';
+        }
+        if (d.twitter) {
+          p += '<div><a href="https://twitter.com/' + d.twitter + '" target="_blank"><i class="fa fa-twitter"></i> @' + d.twitter + '</a></div>';
+        }
+        if (d.facebook) {
+          p += '<div><a href="https://facebook.com/' + d.facebook + '" target="_blank"><i class="fa fa-facebook"></i> ' + d.facebook + ' </a></div>';
+        }
+        if (d.website) {
+          p += '<div><a href="' + d.website + '" target="_blank"><i class="fa fa-globe"></i> ' + d.website + '</a></div>';
+        }
+        p += '</div>';
+
+        return p;
+      };
+
     }
+
+
   }
 
   angular

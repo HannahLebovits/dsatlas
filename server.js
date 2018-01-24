@@ -66,37 +66,61 @@ var Chapter = mongoose.model('chapters', chapterSchema);
 
 // methods ==================
 
-app.get('/chapters', function(req,res,next) {
+app.get('/chapters', function(req,res) {
   Chapter.find({})
     .exec()
     .then(function(chapters) { res.json(chapters); })
-    .catch(function(err) { console.log('Error getting data'); });
+    .catch(function(err) { throw err; });
 });
 
-app.get('/states/totals', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/state-totals.json', 'utf8', function(err, data) {
+app.get('/totals/states', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/totals/state-totals.json', 'utf8', function(err, data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/states/geojson', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/us-states.json', 'utf8', function(err,data) {
+app.get('/totals/districts', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/totals/district-totals.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/counties/geojson', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/us-counties.json', 'utf8', function(err,data) {
+app.get('/totals/counties', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/totals/county-totals.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/counties/totals', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/county-totals.json', 'utf8', function(err,data) {
+app.get('/geojson/states', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/geojson/us-states.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
-})
+});
+
+app.get('/geojson/counties', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/geojson/us-counties.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+
+app.get('/geojson/districts', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/geojson/congressional-districts.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+app.get('/const/statenumbers', function(req,res) {
+  fs.readFile(__dirname + '/assets/data/const/state-numbers.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
+
+

@@ -66,6 +66,27 @@ th.chapter-link {
 table.chapter-link {
   width: 100%; }
 
+.popup-container {
+  font-size: large; }
+  .popup-container .popup-body {
+    width: 100%;
+    display: block; }
+    .popup-container .popup-body .popup-members-line {
+      display: inline-block;
+      width: 50%;
+      text-align: left; }
+
+.modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important; }
+
+.modal-header {
+  text-align: center; }
+  .modal-header > img {
+    width: 200px; }
+
 html, body {
   height: 100%;
   width: 100%;
