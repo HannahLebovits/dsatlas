@@ -44,9 +44,9 @@
       info.update = function(props) {
 
         if (props) {
-          var state = props['STATE'],
-            county = props['COUNTY'],
-            name = props['NAME'],
+          var state = props.STATE,
+            county = props.COUNTY,
+            name = props.NAME,
             fips = state + county,
             label = (state === '22' ? 'Parish' :
                     (state === '72' ? 'Municipio' :
@@ -74,13 +74,13 @@
       info.update = function(props) {
 
         if (props) {
-          var state = props['STATE'],
-              district = props['CD'],
+          var state = props.STATE,
+              district = props.CD,
               distInt = parseInt(district),
               shortened = state + district,
               label = (distInt === 0 ? 'At Large' :
                        distInt === 98 ? '(Non-Voting)' : 'District ' + distInt),
-              stateLabel = stateNumbers[state]['name'];
+              stateLabel = stateNumbers[state].name;
 
           this._div.innerHTML = '<h4>Congressional District Information</h4>' + (props ?
             '<b>' + stateLabel + ' ' + label + '</b></br>' +

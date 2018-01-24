@@ -12,20 +12,18 @@
     };
 
     function linkFunction(scope, elem, attrs) {
-      var vm = this;
+      var stateInfo = {};
+      var stateLegend = {};
 
-      vm.stateInfo = {};
-      vm.stateLegend = {};
+      var countyInfo = {};
+      var countyLegend = {};
 
-      vm.countyInfo = {};
-      vm.countyLegend = {};
+      var districtInfo = {};
+      var districtLegend = {};
 
-      vm.districtInfo = {};
-      vm.districtLegend = {};
-
-      vm.countyBrackets = colorFactory.getCountyBrackets();
-      vm.stateBrackets = colorFactory.getStateBrackets();
-      vm.districtBrackets = colorFactory.getDistrictBrackets();
+      var countyBrackets = colorFactory.getCountyBrackets();
+      var stateBrackets = colorFactory.getStateBrackets();
+      var districtBrackets = colorFactory.getDistrictBrackets();
 
       d3Service.d3().then(function(d3) {
 
@@ -42,9 +40,9 @@
           fillOpacity: 0.0
           });
 
-        vm.stateInfo = infoBoxFactory.stateInfoBox(scope.stateTotals, scope.chaptersPerState);
-        vm.countyInfo = infoBoxFactory.countyInfoBox(scope.countyTotals);
-        vm.districtInfo = infoBoxFactory.districtInfoBox(scope.districtTotals, scope.stateNumbers);
+        stateInfo = infoBoxFactory.stateInfoBox(scope.stateTotals, scope.chaptersPerState);
+        countyInfo = infoBoxFactory.countyInfoBox(scope.countyTotals);
+        districtInfo = infoBoxFactory.districtInfoBox(scope.districtTotals, scope.stateNumbers);
 
         map.addLayer(states);
         map.addLayer(markerClusters);
@@ -64,55 +62,55 @@
 
         L.control.layers(baseLayers,overlays).addTo(map);
 
-        vm.stateLegend = legendFactory.makeLegend(map, vm.stateBrackets);
-        vm.countyLegend = legendFactory.makeLegend(map, vm.countyBrackets);
-        vm.districtLegend = legendFactory.makeLegend(map, vm.districtBrackets);
+        stateLegend = legendFactory.makeLegend(map, stateBrackets);
+        countyLegend = legendFactory.makeLegend(map, countyBrackets);
+        districtLegend = legendFactory.makeLegend(map, districtBrackets);
 
-        vm.stateLegend.addTo(map);
-        vm.stateInfo.addTo(map);
+        stateLegend.addTo(map);
+        stateInfo.addTo(map);
 
         map.on('baselayerchange', function(e) {
           if (e.name === 'States') {
-            vm.countyLegend.remove(map);
-            vm.countyInfo.remove(map);
+            countyLegend.remove(map);
+            countyInfo.remove(map);
 
-            vm.districtLegend.remove(map);
-            vm.districtInfo.remove(map);
+            districtLegend.remove(map);
+            districtInfo.remove(map);
 
-            vm.stateLegend.addTo(map);
-            vm.stateInfo.addTo(map);
+            stateLegend.addTo(map);
+            stateInfo.addTo(map);
 
             states.bringToBack();
           } else if (e.name === 'Counties') {
-            vm.stateLegend.remove(map);
-            vm.stateInfo.remove(map);
+            stateLegend.remove(map);
+            stateInfo.remove(map);
 
-            vm.districtLegend.remove(map);
-            vm.districtInfo.remove(map);
+            districtLegend.remove(map);
+            districtInfo.remove(map);
 
-            vm.countyLegend.addTo(map);
-            vm.countyInfo.addTo(map);
+            countyLegend.addTo(map);
+            countyInfo.addTo(map);
             counties.bringToBack();
           } else if (e.name === 'National Congressional Districts') {
-            vm.stateLegend.remove(map);
-            vm.stateInfo.remove(map);
+            stateLegend.remove(map);
+            stateInfo.remove(map);
 
-            vm.countyLegend.remove(map);
-            vm.countyInfo.remove(map);
+            countyLegend.remove(map);
+            countyInfo.remove(map);
 
-            vm.districtLegend.addTo(map);
-            vm.districtInfo.addTo(map);
+            districtLegend.addTo(map);
+            districtInfo.addTo(map);
 
             districts.bringToBack();
           } else if (e.name === 'Off') {
-            vm.stateLegend.remove(map);
-            vm.stateInfo.remove(map);
+            stateLegend.remove(map);
+            stateInfo.remove(map);
 
-            vm.countyLegend.remove(map);
-            vm.countyInfo.remove(map);
+            countyLegend.remove(map);
+            countyInfo.remove(map);
 
-            vm.districtLegend.remove(map);
-            vm.districtInfo.remove(map);
+            districtLegend.remove(map);
+            districtInfo.remove(map);
           }
         });
       });
@@ -126,19 +124,19 @@
 
         function style(feature) {
           return {
-            weight: 0,
+            weight: 1,
             opacity: 0.5,
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
             fillColor: colorFactory.getColor(
-              scope.districtTotals[feature.properties['STATE'] + feature.properties['CD']], vm.districtBrackets)
+              scope.districtTotals[feature.properties.STATE + feature.properties.CD], districtBrackets)
           };
         }
 
         function resetHighlight(e) {
           districtsJson.resetStyle(e.target);
-          vm.countyInfo.update();
+          countyInfo.update();
         }
 
         function highlightFeature(e) {
@@ -147,11 +145,12 @@
             fillOpacity: 1.0,
             weight: 2
           });
-          vm.districtInfo.update(layer.feature.properties);
+          districtInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          highlightFeature(e);
         }
 
         function onEachFeature(feature, layer) {
@@ -159,7 +158,7 @@
             mouseover: highlightFeature,
             mouseout: resetHighlight,
             click: zoomToFeature
-          })
+          });
         }
 
         districtsJson = L.geoJSON(scope.districtsGeoJson, {
@@ -176,19 +175,19 @@
         var countiesJson = {};
         function style(feature) {
           return {
-            weight: 0,
+            weight: 1,
             opacity: 0.5,
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
             fillColor: colorFactory.getColor(
-              scope.countyTotals[feature.properties['STATE'] + feature.properties['COUNTY']], vm.countyBrackets)
+              scope.countyTotals[feature.properties.STATE + feature.properties.COUNTY], countyBrackets)
           };
         }
 
         function resetHighlight(e) {
           countiesJson.resetStyle(e.target);
-          vm.countyInfo.update();
+          countyInfo.update();
         }
 
         function highlightFeature(e) {
@@ -197,11 +196,12 @@
             fillOpacity: 1.0,
             weight: 2
           });
-          vm.countyInfo.update(layer.feature.properties);
+          countyInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          highlightFeature(e);
         }
 
         function onEachFeature(feature, layer) {
@@ -209,7 +209,7 @@
             mouseover: highlightFeature,
             mouseout: resetHighlight,
             click: zoomToFeature
-          })
+          });
         }
 
         countiesJson = L.geoJSON(scope.countiesGeoJson, {
@@ -231,13 +231,13 @@
             color: '#333',
             dashArray: '0',
             fillOpacity: 0.8,
-            fillColor: colorFactory.getColor(scope.stateTotals[feature.properties.abbr], vm.stateBrackets)
+            fillColor: colorFactory.getColor(scope.stateTotals[feature.properties.abbr], stateBrackets)
           };
         }
 
         function resetHighlight(e) {
           statesJson.resetStyle(e.target);
-          vm.stateInfo.update();
+          stateInfo.update();
         }
 
         function highlightFeature(e) {
@@ -246,11 +246,12 @@
             fillOpacity: 1.0,
             weight: 2
           });
-          vm.stateInfo.update(layer.feature.properties);
+          stateInfo.update(layer.feature.properties);
         }
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          highlightFeature(e);
         }
 
         function onEachFeature(feature, layer) {
@@ -258,7 +259,7 @@
             mouseover: highlightFeature,
             mouseout: resetHighlight,
             click: zoomToFeature
-          })
+          });
         }
 
         statesJson = L.geoJSON(scope.statesGeoJson, {

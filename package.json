@@ -17,7 +17,7 @@
     "angular-ui-bootstrap": "^2.5.6",
     "@uirouter/angularjs": "^1.0.12",
     "body-parser": "^1.18.2",
-    "bootstrap": "3.3.7",
+    "bootstrap": "^3.3.7",
     "bootstrap-social": "^5.1.1",
     "d3": "^4.12.2",
     "express": "^4.16.2",
@@ -36,6 +36,7 @@
   },
   "engine": "node>=6.0.0",
   "scripts": {
-    "lint": "jshint app/**/*.js"
+    "lint": "jshint app/**/*.js",
+    "lint:checkstyle": "jshint app/**/*.js --reporter checkstyle > checkstyle.xml"
   }
 }

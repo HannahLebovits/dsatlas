@@ -1,6 +1,12 @@
 .idea/
 node_modules/
-*.map
+*.css
+!main.css
+*.css.map
 scripts/
 *.service
 .DS_Store/
+
+package-lock.json
+checkstyle.xml
+dist/*

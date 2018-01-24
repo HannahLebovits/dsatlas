@@ -8,7 +8,7 @@
 
     $ctrl.close = function() {
       $uibModalInstance.close();
-    }
+    };
   }
 
   angular.module('dsatlas.app')
