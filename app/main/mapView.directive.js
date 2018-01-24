@@ -37,6 +37,10 @@
         var counties = populateCounties(map);
         var districts = populateDistricts(map);
         var markerClusters = populateMarkers(map);
+        var off = L.circleMarker(new L.LatLng(0,0), {
+          opacity: 0.0,
+          fillOpacity: 0.0
+          });
 
         vm.stateInfo = infoBoxFactory.stateInfoBox(scope.stateTotals, scope.chaptersPerState);
         vm.countyInfo = infoBoxFactory.countyInfoBox(scope.countyTotals);
@@ -54,7 +58,8 @@
         var baseLayers = {
           "States": states,
           "Counties": counties,
-          "National Congressional Districts": districts
+          "National Congressional Districts": districts,
+          "Off": off
         };
 
         L.control.layers(baseLayers,overlays).addTo(map);
@@ -99,6 +104,15 @@
             vm.districtInfo.addTo(map);
 
             districts.bringToBack();
+          } else if (e.name === 'Off') {
+            vm.stateLegend.remove(map);
+            vm.stateInfo.remove(map);
+
+            vm.countyLegend.remove(map);
+            vm.countyInfo.remove(map);
+
+            vm.districtLegend.remove(map);
+            vm.districtInfo.remove(map);
           }
         });
       });
