@@ -16,10 +16,10 @@
 
         div.innerHTML = '<h4>Members</h4>';
         div.innerHTML += '<i style="background: ' + colorFactory.getColor(brackets[0], brackets) + '"></i>' + brackets[0] + ' +</br>';
-        for (var i=1; i<brackets.length-1; ++i) {
+        for (var i=1; i<brackets.length; ++i) {
           div.innerHTML +=
             '<i style="background: ' + colorFactory.getColor(brackets[i], brackets) + '"></i>' +
-            brackets[i] + ' &ndash; ' + brackets[i+1] + '</br>';
+            brackets[i] + ' &ndash; ' + brackets[i-1] + '</br>';
         }
 
         return div;
