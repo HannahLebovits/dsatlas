@@ -36,15 +36,18 @@
           }
         })
         .state('map', {
-          url: '/map',
+          url: '/map?lat&lon',
           templateUrl: 'app/main/views/map.html',
-          parent: 'main'
-
+          parent: 'main',
+          controller: 'AppController',
+          controllerAs: 'vm'
         })
         .state('list', {
           url: '/list',
           templateUrl: 'app/main/views/list.html',
-          parent: 'main'
+          parent: 'main',
+          controller: 'AppController',
+          controllerAs: 'vm'
         });
     }]);
 })();
