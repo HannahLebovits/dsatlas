@@ -6,6 +6,7 @@
     'ui.bootstrap',
     'ngAnimate',
     'ngSanitize',
+    'vcRecaptcha',
     'd3'
     ]);
 })();

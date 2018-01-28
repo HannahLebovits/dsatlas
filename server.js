@@ -1,16 +1,5 @@
 #!/usr/env/bin node
 
-// Read-only user ===============
-var mongo = {
-  credentials: {
-    user: 'dsatlas-prod-readonly',
-    pass: 'dsatlas-prod-readonly',
-    host: '74.208.175.170',
-    port: '27017',
-    db: 'dsatlas'
-  }
-};
-
 // set up ========================
 var express        = require('express');
 var mongoose       = require('mongoose');
@@ -19,11 +8,18 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var fs             = require('fs');
 var path           = require('path');
+var mailer         = require('express-mailer');
+var config         = require('config');
 
 var app = module.exports = express();
 
+// mailer ========================
+mailer.extend(app, config.get('mail.prod'));
+app.set('views', __dirname + '/config/pug');
+app.set('view engine', 'pug');
+
 // configuration =================
-var creds = mongo.credentials;
+var creds = config.get('mongo.prod');
 var mongoUrl = 'mongodb://' + creds.user +
                ':' + creds.pass +
                '@' + creds.host +
@@ -41,7 +37,7 @@ app.use(methodOverride());
 
 // application ==================
 
-var port = 80;
+var port = 3000;
 app.listen(port, function() {
   console.log('site started on port',port);
 });
@@ -123,4 +119,22 @@ app.get('/const/statenumbers', function(req,res) {
   });
 });
 
-
+app.post('/email', function(req,res) {
+  app.mailer.send('email', {
+    to: 'info@dsatlas.org',
+    subject: 'Feedback For DSAtlas',
+    name: req.body.name,
+    email: req.body.email,
+    content: req.body.content
+  }, function(err) {
+    if (err) throw err;
+    app.mailer.send('confirmation', {
+      to: req.body.email,
+      subject: 'Thank you for your feedback!',
+      name: req.body.name
+    }, function (err) {
+      if (err) throw err;
+      res.send('Email sent.');
+    });
+  });
+});

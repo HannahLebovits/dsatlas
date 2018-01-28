@@ -6,6 +6,7 @@ node_modules/
 scripts/
 *.service
 .DS_Store/
+config/
 
 package-lock.json
 checkstyle.xml

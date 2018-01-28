@@ -12,6 +12,11 @@
     };
 
     function linkFunction(scope, elem, attrs) {
+      var queried = (scope.lat && scope.lon);
+      var lat = (queried ? scope.lat : 37.8);
+      var lon = (queried ? scope.lon : -96.9);
+      var zoom = (queried ? 8 : 4);
+
       var stateInfo = {};
       var stateLegend = {};
 
@@ -27,8 +32,11 @@
 
       d3Service.d3().then(function(d3) {
 
-        var map = new L.Map('map', { center: [37.8, -96.9], zoom: 4});
-        var tiles = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+        var map = new L.Map('map', { center: [lat, lon], zoom: zoom});
+        var tiles = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
         tiles.addTo(map);
 
         var states = populateStates(map);
@@ -44,7 +52,7 @@
         countyInfo = infoBoxFactory.countyInfoBox(scope.countyTotals);
         districtInfo = infoBoxFactory.districtInfoBox(scope.districtTotals, scope.stateNumbers);
 
-        map.addLayer(states);
+        map.addLayer(queried ? off : states);
         map.addLayer(markerClusters);
 
         states.bringToBack();
@@ -56,7 +64,7 @@
         var baseLayers = {
           "States": states,
           "Counties": counties,
-          "National Congressional Districts": districts,
+          "Congressional Districts": districts,
           "Off": off
         };
 
@@ -91,7 +99,7 @@
             countyLegend.addTo(map);
             countyInfo.addTo(map);
             counties.bringToBack();
-          } else if (e.name === 'National Congressional Districts') {
+          } else if (e.name === 'Congressional Districts') {
             stateLegend.remove(map);
             stateInfo.remove(map);
 
@@ -150,6 +158,7 @@
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          resetHighlight(e);
           highlightFeature(e);
         }
 
@@ -201,6 +210,7 @@
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          resetHighlight(e);
           highlightFeature(e);
         }
 
@@ -251,6 +261,7 @@
 
         function zoomToFeature(e) {
           map.fitBounds(e.target.getBounds());
+          resetHighlight(e);
           highlightFeature(e);
         }
 
@@ -337,11 +348,12 @@
           '<div class="popup-container"><h3>' + d.name + '</h3>' +
           '<div class="popup-body">';
 
-        if (d.members === 0 && !d.twitter && !d.facebook && !d.website) {
+        if (d.members === 0) {
           p += '<div class="text-right">' + d.city + ', ' + d.state + '</div>';
         } else {
           p += '<div class="pull-right">' + d.city + ', ' + d.state + '</div>';
         }
+
         if (d.members > 0) {
           p += '<div class="popup-members-line">' + d.members + ' members</div>';
         }

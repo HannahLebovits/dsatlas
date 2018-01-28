@@ -14,8 +14,18 @@
       getStateTotals: function() { return get('/totals/states'); },
       getCountyTotals: function() { return get('/totals/counties'); },
       getDistrictTotals: function() { return get('/totals/districts'); },
-      getStateNumberMap: function() { return get('/const/statenumbers'); }
+      getStateNumberMap: function() { return get('/const/statenumbers'); },
+      sendEmail: function(data) { return post('/email', data); }
     };
+
+    function post(endpoint, data) {
+      return $http({
+        method: 'POST',
+        url: endpoint,
+        data: data,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
 
     function get(endpoint) {
       return $http({
