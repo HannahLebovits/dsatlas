@@ -60,13 +60,13 @@
     margin-right: 8px;
     opacity: 0.7; }
 
-th.chapter-link {
+td.chapter-link {
   width: 33%; }
 
 table.chapter-link {
   width: 100%; }
 
-td.clickable {
+.clickable {
   text-align: left;
   cursor: pointer; }
 
@@ -92,6 +92,11 @@ td.clickable {
   .modal-header > img {
     width: 200px; }
 
+.captcha-helper {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 10px; }
+
 html, body {
   height: 100%;
   width: 100%;
@@ -112,5 +117,8 @@ html, body {
 
 .light-th {
   font-weight: normal; }
+
+.color-red {
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */
