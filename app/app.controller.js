@@ -4,8 +4,10 @@
   AppController.$inject = ['$scope', '$uibModal', 'dataservice', '$location', '$state', '$stateParams'];
 
   function AppController($scope, $uibModal, dataservice, $location, $state, $stateParams) {
-    var vm = this;
-    vm.dataservice = new dataservice();
+    $scope.sortType = 'name';
+    $scope.sortReverse = false;
+    $scope.searchName = '';
+    $scope.searchLocation = '';
 
     parseQueryParameters();
 
@@ -40,6 +42,15 @@
       };
       $state.go('map',params)
     };
+
+    $scope.setSort = function(field) {
+      if ($scope.sortType === field) {
+        $scope.sortReverse = !$scope.sortReverse;
+      } else {
+        $scope.sortType = field;
+        $scope.sortReverse = false;
+      }
+    }
 
     function parseQueryParameters() {
       $scope.lat = $stateParams.lat;

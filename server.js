@@ -37,7 +37,7 @@ app.use(methodOverride());
 
 // application ==================
 
-var port = 3000;
+var port = 80;
 app.listen(port, function() {
   console.log('site started on port',port);
 });
