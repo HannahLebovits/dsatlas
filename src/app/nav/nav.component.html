@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="../../assets/img/dsatlas_logo.png" height="30" alt="DSAtlas"/></a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navBarSupportedContent"
+          aria-controls="navBarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          (click)="toggleCollapsed()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [ngClass]="{ 'collapse': collapsed, 'navbar-collapse': true }" id="navBarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="{ active: isActive('/map') }">
+        <a class="nav-link" routerLink="/map" routerLinkActive="active"><i class="fa fa-map"></i> Map </a>
+      </li>
+      <li class="nav-item" [ngClass]="{ active: isActive('/list') }">
+        <a class="nav-link" routerLink="/list" routerLinkActive="active"><i class="fa fa-list"></i> List </a>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" ngbDropdownToggle>
+          <i class="fa fa-link"></i> Links <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ngbDropdownMenu>
+          <a class="dropdown-item" href="http://www.dsausa.org/"><i class="fa fa-users"></i> Join DSA </a>
+        </div>
+      </li>
+
+    </ul>
+    <form class="navbar-form navbar-right">
+      <div class="navbar-group">
+        <app-email-modal></app-email-modal>
+        <app-info-modal></app-info-modal>
+      </div>
+    </form>
+  </div>
+</nav>

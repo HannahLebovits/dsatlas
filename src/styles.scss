@@ -1,0 +1,15 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-social/bootstrap-social.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~leaflet/dist/leaflet.css";
+@import "~leaflet.markercluster/dist/MarkerCluster.css";
+
+@import './app/list/list.component';
+@import './app/map/map.component';
+@import './app/nav/nav.component';
+
+html,body {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}

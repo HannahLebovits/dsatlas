@@ -18,18 +18,21 @@ DSAtlas is an interactive map of chapters for the Democratic Socialists of Ameri
 ----------
 #### Installation
 
-In order to run DSAtlas locally, you need to have [npm](https://www.npmjs.com/) installed.
+In order to run DSAtlas locally, you need to have [npm](https://www.npmjs.com/) and the Angular-cli installed.
 
-To install and run the server, run:
+To compile the typescript run:
 
 ```bash
-$ npm install
+$ ng build
+```
+
+Then launch a server by running the npm script
+
+```bash
 $ npm start
 ```
 
 Once completed, open your browser and navigate to http://127.0.0.1:3000 (or http://localhost:3000)
-
->Note: This project uses a read-only user that links to the remote Mongo server in production.
 
 #### Contributing
 

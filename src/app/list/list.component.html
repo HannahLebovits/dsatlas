@@ -1,0 +1,83 @@
+<div class="container text-center under-fixed-navbar" >
+  <div class="alert alert-warning">Note: This list is not exhaustive as numbers are self-reported and constantly being updated.</div>
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr class="row">
+        <th scope="col" class="col-sm-1"> Links </th>
+        <th scope="col" class="col-sm-5 clickable" (click)="setSort('name')">
+          Chapter
+          <div [hidden]="!(sortTag=='name' && sortReverse === false)" class="badge badge-danger"><i class="fa fa-caret-down"></i></div>
+          <div [hidden]="!(sortTag=='name' && sortReverse === true)" class="badge badge-success"><i class="fa fa-caret-up"></i></div>
+        </th>
+        <th scope="col" class="col-sm-2 clickable" (click)="setSort('city')">
+          City
+          <div [hidden]="!(sortTag=='city' && sortReverse === false)" class="badge badge-danger"><i class="fa fa-caret-down"></i></div>
+          <div [hidden]="!(sortTag=='city' && sortReverse === true)" class="badge badge-success"><i class="fa fa-caret-up"></i></div>
+        </th>
+        <th scope="col" class="col-sm-2 clickable" (click)="setSort('state')">
+          State
+          <div [hidden]="!(sortTag=='state' && sortReverse === false)" class="badge badge-danger"><i class="fa fa-caret-down"></i></div>
+          <div [hidden]="!(sortTag=='state' && sortReverse === true)" class="badge badge-success"><i class="fa fa-caret-up"></i></div>
+        </th>
+        <th scope="col" class="col-sm-2 clickable" (click)="setSort('members')">
+          Members
+          <div [hidden]="!(sortTag=='members' && sortReverse === false)" class="badge badge-danger"><i class="fa fa-caret-down"></i></div>
+          <div [hidden]="!(sortTag=='members' && sortReverse === true)" class="badge badge-success"><i class="fa fa-caret-up"></i></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr class="row">
+      <td class="col-sm-1"></td>
+      <td class="col-sm-5">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="chapter-search"><i class="fa fa-search"></i></span>
+          </div>
+          <input [(ngModel)]="searchFilter.name" name="searchFilter.name" title="searchName" type="text" class="form-control" aria-describedby="chapter-search">
+        </div>
+      </td>
+      <td class="col-sm-2">
+        <div class="input-group mb-1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="city-search"><i class="fa fa-search"></i></span>
+          </div>
+          <input [(ngModel)]="searchFilter.city" title="searchCity" type="text" class="form-control" aria-describedby="city-search">
+        </div>
+      </td>
+      <td class="col-sm-2">
+        <div class="input-group mb-1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="state-search"><i class="fa fa-search"></i></span>
+          </div>
+          <input [(ngModel)]="searchFilter.state" title="searchState" type="text" class="form-control" aria-describedby="state-search">
+        </div>
+      </td>
+      <td class="col-sm-2">
+      </td>
+    </tr>
+    <tr *ngFor="let value of chapters | filterBy: searchFilter | orderBy:sortTag:sortReverse" class="row">
+      <td class="col-sm-1">
+        <table class="chapter-link">
+          <tr>
+            <td class="chapter-link">
+              <div *ngIf="value.twitter"><a href="https://twitter.com/{{value.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></div>
+            </td>
+            <td class="chapter-link">
+              <div *ngIf="value.facebook"><a href="https://facebook.com/{{value.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></div>
+            </td>
+            <td class="chapter-link">
+              <div *ngIf="value.website"><a href="{{value.website}}" target="_blank"><i class="fa fa-globe"></i></a></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="col-sm-5 clickable text-left" (click)="goTo(value)"> {{ value.name }} </td>
+      <td class="col-sm-2 clickable" (click)="goTo(value)"> {{ value.city }} </td>
+      <td class="col-sm-2 clickable" (click)="goTo(value)"> {{ value.state }} <img src="{{ flagSrc(value.state | lowercase)}}" height="10px" /></td>
+      <td class="col-sm-2 clickable" (click)="goTo(value)"> {{ value.members > 0 ? value.members : ''}} </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

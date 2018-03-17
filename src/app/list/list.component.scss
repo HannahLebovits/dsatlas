@@ -1,0 +1,24 @@
+@import '../globals.scss';
+
+td.chapter-link {
+  width: 33%;
+  border-top: none !important;
+}
+
+table.chapter-link {
+  width: 100%;
+}
+
+.row {
+  min-height: 43px;
+}
+
+.table {
+  th {
+    border-top: none !important;
+  }
+}
+td.clickable {
+  cursor: pointer;
+  vertical-align: middle;
+}

@@ -1,0 +1,49 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <ngx-loading [show]="sending"></ngx-loading>
+  <form novalidate [formGroup]="emailForm">
+  <div class="modal-header">
+    <h3 class="modal-title">Send Feedback</h3>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text"
+             id="name"
+             placeholder="Name"
+             formControlName="name"
+             class="form-control"
+             required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email"
+             id="email"
+             placeholder="Email Address"
+             formControlName="email"
+             class="form-control"
+             required>
+    </div>
+    <div class="form-group">
+      <label for="feedback">Feedback</label>
+      <textarea id="feedback"
+                formControlName="feedback"
+                class="form-control"
+                rows="3"
+                required></textarea>
+    </div>
+  </div>
+  <div class="captcha-helper text-center">
+    <re-captcha [formControlName]="'recaptcha'" siteKey="6Lf68UIUAAAAANgbCTXjhFjHKUDjpdBXhPN4yJat"></re-captcha>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" [disabled]="emailForm.invalid" class="btn btn-primary" (click)="sendEmail()"><i class="fa fa-envelope"></i> Send</button>
+  </div>
+  </form>
+</ng-template>
+
+<button type="button" class="btn btn-outline-dark" (click)="open(content)">
+  <i class="fa fa-envelope" aria-hidden="true"></i>
+</button>

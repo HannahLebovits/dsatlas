@@ -1,43 +1,43 @@
 #!/usr/env/bin node
 
 // set up ========================
-var express        = require('express');
-var mongoose       = require('mongoose');
-var morgan         = require('morgan');
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
-var fs             = require('fs');
-var path           = require('path');
-var mailer         = require('express-mailer');
-var config         = require('config');
+const express        = require('express');
+const mongoose       = require('mongoose');
+const morgan         = require('morgan');
+const bodyParser     = require('body-parser');
+const methodOverride = require('method-override');
+const fs             = require('fs');
+const path           = require('path');
+const mailer         = require('express-mailer');
+const config         = require('config');
 
-var app = module.exports = express();
+const app = module.exports = express();
 
 // mailer ========================
 mailer.extend(app, config.get('mail.prod'));
-app.set('views', __dirname + '/config/pug');
+app.set('views', __dirname + '/dist/config/pug');
 app.set('view engine', 'pug');
 
 // configuration =================
 var creds = config.get('mongo.prod');
 var mongoUrl = 'mongodb://' + creds.user +
-               ':' + creds.pass +
-               '@' + creds.host +
-               ':' + creds.port +
-               '/' + creds.db;
+  ':' + creds.pass +
+  '@' + creds.host +
+  ':' + creds.port +
+  '/' + creds.db;
 
 mongoose.connect(mongoUrl,  function(err) {
-    if (err) { console.log(err); }
+  if (err) { console.log(err); }
 });
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname,"dist")));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
 // application ==================
 
-var port = 80;
+const port = process.env.PORT || '3000';
 app.listen(port, function() {
   console.log('site started on port',port);
 });
@@ -62,64 +62,64 @@ var Chapter = mongoose.model('chapters', chapterSchema);
 
 // methods ==================
 
-app.get('/chapters', function(req,res) {
+app.get('/api/chapters', function(req,res) {
   Chapter.find({})
     .exec()
     .then(function(chapters) { res.json(chapters); })
     .catch(function(err) { throw err; });
 });
 
-app.get('/totals/states', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/totals/state-totals.json', 'utf8', function(err, data) {
+app.get('/api/totals/states', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/totals/state-totals.json', 'utf8', function(err, data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/totals/districts', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/totals/district-totals.json', 'utf8', function(err,data) {
+app.get('/api/totals/districts', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/totals/district-totals.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/totals/counties', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/totals/county-totals.json', 'utf8', function(err,data) {
+app.get('/api/totals/counties', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/totals/county-totals.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/geojson/states', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/geojson/us-states.json', 'utf8', function(err,data) {
+app.get('/api/geojson/states', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/geojson/us-states.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/geojson/counties', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/geojson/us-counties.json', 'utf8', function(err,data) {
+app.get('/api/geojson/counties', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/geojson/us-counties.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
 
-app.get('/geojson/districts', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/geojson/congressional-districts.json', 'utf8', function(err,data) {
+app.get('/api/geojson/districts', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/geojson/congressional-districts.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.get('/const/statenumbers', function(req,res) {
-  fs.readFile(__dirname + '/assets/data/const/state-numbers.json', 'utf8', function(err,data) {
+app.get('/api/statenumbers', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/const/state-numbers.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
 });
 
-app.post('/email', function(req,res) {
+app.post('/api/email', function(req,res) {
   app.mailer.send('email', {
     to: 'info@dsatlas.org',
     subject: 'Feedback For DSAtlas',
@@ -134,7 +134,7 @@ app.post('/email', function(req,res) {
       name: req.body.name
     }, function (err) {
       if (err) throw err;
-      res.send('Email sent.');
+      res.send({ status: 'OK' });
     });
   });
 });
