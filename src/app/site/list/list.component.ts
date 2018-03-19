@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChapterModel } from '../model/chapter.model';
+import { ChapterModel } from '../../shared/model/chapter.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

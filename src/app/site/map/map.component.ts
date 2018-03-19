@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ChapterModel } from '../model/chapter.model';
-import { ColorMapService } from '../shared/color-map.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { InfoBoxService } from '../shared/info-box.service';
-import { LegendService } from '../shared/legend.service';
-import { MarkerService } from '../shared/marker.service';
+import { ActivatedRoute } from '@angular/router';
 import * as L from 'leaflet';
-import { LatLng } from 'leaflet';
+
+import { ChapterModel } from '../../shared/model/chapter.model';
+import { ColorMapService } from '../../shared/color-map.service';
+import { InfoBoxService } from '../../shared/info-box.service';
+import { LegendService } from '../../shared/legend.service';
+import { MarkerService } from '../../shared/marker.service';
 
 @Component({
   selector: 'app-map',

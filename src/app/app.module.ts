@@ -9,33 +9,40 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { LoadingModule, ANIMATION_TYPES } from 'ngx-loading';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { D3Service } from 'd3-ng2-service';
 import { DataService } from './shared/data.service';
 import { ColorMapService } from './shared/color-map.service';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { ListComponent } from './list/list.component';
-import { MapComponent } from './map/map.component';
-import { ChapterModelResolver } from './model/resolver/chapter.model.resolver';
-import { StatesGeoJsonResolver, CountiesGeoJsonResolver, DistrictsGeoJsonResolver } from './model/resolver/geojson.resolver';
-import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './model/resolver/data.resolver';
+import { NavComponent } from './site/nav/nav.component';
+import { ListComponent } from './site/list/list.component';
+import { MapComponent } from './site/map/map.component';
+import { EmailModalComponent } from './site/email-modal/email-modal.component';
+import { InfoModalComponent } from './site/info-modal/info-modal.component';
+
+import { ChapterModelResolver } from './shared/model/resolver/chapter.model.resolver';
+import { StatesGeoJsonResolver, CountiesGeoJsonResolver, DistrictsGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
+import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './shared/model/resolver/data.resolver';
+
 import { InfoBoxService } from './shared/info-box.service';
 import { LegendService } from './shared/legend.service';
 import { MarkerService } from './shared/marker.service';
 import { PopupService } from './shared/popup.service';
-import { EmailModalComponent } from './email-modal/email-modal.component';
-import { InfoModalComponent } from './info-modal/info-modal.component';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { LoginComponent } from './admin/login/login.component';
+import { LandingComponent } from './site/landing/landing.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    LandingComponent,
     ListComponent,
     MapComponent,
     EmailModalComponent,
+    LoginComponent,
     InfoModalComponent
   ],
   imports: [

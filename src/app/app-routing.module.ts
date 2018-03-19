@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MapComponent } from './map/map.component';
-import { ListComponent } from './list/list.component';
-import { ChapterModelResolver } from './model/resolver/chapter.model.resolver';
-import { CountiesGeoJsonResolver, DistrictsGeoJsonResolver, StatesGeoJsonResolver } from './model/resolver/geojson.resolver';
-import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './model/resolver/data.resolver';
+import { MapComponent } from './site/map/map.component';
+import { ListComponent } from './site/list/list.component';
+import { ChapterModelResolver } from './shared/model/resolver/chapter.model.resolver';
+import { CountiesGeoJsonResolver, DistrictsGeoJsonResolver, StatesGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
+import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './shared/model/resolver/data.resolver';
+import { LoginComponent } from './admin/login/login.component';
+import { LandingComponent } from './site/landing/landing.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -20,9 +22,19 @@ const appRoutes: Routes = [
       stateNumbers: StateNumbersResolver
     },
     children: [
-      { path: '', redirectTo: '/map', pathMatch: 'full' },
-      { path: 'map', component: MapComponent },
-      { path: 'list', component: ListComponent }
+      { path: '', component: LandingComponent,
+        children: [
+          { path: '', redirectTo: '/map', pathMatch: 'full' },
+          { path: 'map', component: MapComponent },
+          { path: 'list', component: ListComponent }
+        ]
+      },
+    ]
+  },
+  { path: 'admin',
+    children: [
+      { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent }
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }

@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { InfoBoxControlModel } from '../model/info-box-control.model';
-
+import { InfoBoxControlModel } from './model/info-box-control.model';
 
 @Injectable()
 export class InfoBoxService {

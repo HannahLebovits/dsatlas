@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
-import { LegendControlModel } from '../model/legend-control.model';
+import { LegendControlModel } from './model/legend-control.model';
 import { ColorMapService } from './color-map.service';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
-import { ChapterModel } from '../model/chapter.model';
+import { ChapterModel } from './model/chapter.model';
 import { PopupService } from './popup.service';
 
 @Injectable()

@@ -10,4 +10,4 @@ config/
 
 package-lock.json
 checkstyle.xml
-dist/*
+dist/

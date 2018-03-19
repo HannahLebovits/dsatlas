@@ -5,10 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './nav.component.html'
 })
 export class NavComponent {
+  constructor() {}
+
   collapsed = true;
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
   }
 
   isActive(state: string) { }
+
 }

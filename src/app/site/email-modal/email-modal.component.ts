@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from '../shared/data.service';
+import { DataService } from '../../shared/data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-email-modal',
