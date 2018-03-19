@@ -4,10 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapComponent } from './site/map/map.component';
 import { ListComponent } from './site/list/list.component';
 import { ChapterModelResolver } from './shared/model/resolver/chapter.model.resolver';
-import { CountiesGeoJsonResolver, DistrictsGeoJsonResolver, StatesGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
-import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './shared/model/resolver/data.resolver';
+import { CountiesGeoJsonResolver,
+         DistrictsGeoJsonResolver,
+         StatesGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
+import { StateTotalsResolver,
+         CountyTotalsResolver,
+         DistrictTotalsResolver,
+         StateNumbersResolver } from './shared/model/resolver/data.resolver';
 import { LoginComponent } from './admin/login/login.component';
 import { LandingComponent } from './site/landing/landing.component';
+import { BackOfficeComponent } from './admin/backoffice/backoffice.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -34,7 +40,8 @@ const appRoutes: Routes = [
   { path: 'admin',
     children: [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'backoffice', component: BackOfficeComponent }
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }

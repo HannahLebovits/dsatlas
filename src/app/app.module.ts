@@ -23,8 +23,13 @@ import { EmailModalComponent } from './site/email-modal/email-modal.component';
 import { InfoModalComponent } from './site/info-modal/info-modal.component';
 
 import { ChapterModelResolver } from './shared/model/resolver/chapter.model.resolver';
-import { StatesGeoJsonResolver, CountiesGeoJsonResolver, DistrictsGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
-import { StateTotalsResolver, CountyTotalsResolver, DistrictTotalsResolver, StateNumbersResolver } from './shared/model/resolver/data.resolver';
+import { StatesGeoJsonResolver,
+         CountiesGeoJsonResolver,
+         DistrictsGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
+import { StateTotalsResolver,
+         CountyTotalsResolver,
+         DistrictTotalsResolver,
+         StateNumbersResolver } from './shared/model/resolver/data.resolver';
 
 import { InfoBoxService } from './shared/info-box.service';
 import { LegendService } from './shared/legend.service';
@@ -32,6 +37,9 @@ import { MarkerService } from './shared/marker.service';
 import { PopupService } from './shared/popup.service';
 import { LoginComponent } from './admin/login/login.component';
 import { LandingComponent } from './site/landing/landing.component';
+import { BackOfficeComponent } from './admin/backoffice/backoffice.component';
+import { BackOfficeChapterDetailComponent } from './admin/backoffice-chapter-detail/backoffice-chapter-detail.component';
+import { BackOfficeChapterListComponent } from './admin/backoffice-chapter-list/backoffice-chapter-list.component';
 
 
 @NgModule({
@@ -43,7 +51,10 @@ import { LandingComponent } from './site/landing/landing.component';
     MapComponent,
     EmailModalComponent,
     LoginComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    BackOfficeComponent,
+    BackOfficeChapterDetailComponent,
+    BackOfficeChapterListComponent
   ],
   imports: [
     BrowserModule,

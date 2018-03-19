@@ -1,4 +1,23 @@
-<form>
-  <div class="login-container">
+  <div class="container">
+      <img src="/assets/img/dsatlas_logo.png" width="200px" />
+      <h3>Login</h3>
+      <form #loginForm="ngForm" class="form">
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text"
+                     class="form-control"
+                     id="email" required
+                     [(ngModel)]="user.email" name="email">
+          </div>
+
+          <div class="form-group">
+              <label for="password"></label>
+              <input type="password"
+                     class="form-control"
+                     id="password" required
+              [(ngModel)]="user.password" name="password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
   </div>
-</form>

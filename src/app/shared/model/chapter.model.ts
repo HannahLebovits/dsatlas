@@ -12,4 +12,17 @@ export class ChapterModel {
   twitter: string;
   website: string;
   LatLng: LatLng;
+
+  constructor(props?: any) {
+    this._id = props._id;
+    this.name = props.name;
+    this.lat = props.lat;
+    this.lon = props.lon;
+    this.city = props.city;
+    this.state = props.state;
+    this.members = props.members;
+    this.facebook = props.facebook;
+    this.twitter = props.twitter;
+    this.website = props.website;
+  }
 }

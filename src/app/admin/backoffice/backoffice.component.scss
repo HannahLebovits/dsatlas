@@ -1,0 +1,12 @@
+.left-panel {
+  float: left;
+  width: 300px;
+  height: 100%;
+  border-right: 1px red solid;
+}
+
+.right-panel {
+  padding-left: 10px;
+  overflow: hidden;
+  height: 100%;
+}
