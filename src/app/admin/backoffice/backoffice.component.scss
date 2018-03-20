@@ -1,8 +1,9 @@
 .left-panel {
   float: left;
-  width: 300px;
+  width: 400px;
   height: 100%;
-  border-right: 1px red solid;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .right-panel {

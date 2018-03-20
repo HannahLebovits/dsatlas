@@ -41,7 +41,14 @@ const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'backoffice', component: BackOfficeComponent }
+      { path: 'backoffice',
+        resolve: {
+          chapters: ChapterModelResolver
+        },
+        children: [
+          { path: '', component: BackOfficeComponent }
+        ]
+      }
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }

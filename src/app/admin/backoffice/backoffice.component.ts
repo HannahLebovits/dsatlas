@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChapterModel } from '../../shared/model/chapter.model';
-import { DataService } from '../../shared/data.service';
 
 @Component({
   selector: 'app-backoffice',
@@ -8,9 +7,11 @@ import { DataService } from '../../shared/data.service';
   styleUrls: ['./backoffice.component.scss']
 })
 export class BackOfficeComponent implements OnInit {
+  chapters: ChapterModel[];
   constructor() { }
 
   ngOnInit() {
+    console.log(this.chapters);
   }
 
 }

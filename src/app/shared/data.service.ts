@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChapterModel } from './model/chapter.model';
+import { UUID } from 'angular2-uuid';
 
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -71,7 +72,9 @@ export class DataService {
   }
 
   addEmptyChapter() {
-    const c = new ChapterModel();
+    const c = new ChapterModel({
+      _id: UUID.UUID(),
+      name: 'New Chapter' });
     this._dataStore.chapters.push(c);
     this.setNew(c);
     this._chapters.next(Object.assign({}, this._dataStore).chapters);

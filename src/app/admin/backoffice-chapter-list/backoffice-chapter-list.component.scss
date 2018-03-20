@@ -1,7 +1,4 @@
-
-.scrollable {
-  height: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
-  padding: 0;
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
 }

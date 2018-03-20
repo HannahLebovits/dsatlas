@@ -9,12 +9,12 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./backoffice-chapter-detail.component.scss']
 })
 export class BackOfficeChapterDetailComponent implements OnInit {
-  editing$: Observable<ChapterModel>;
+  editing: ChapterModel;
+  objectkeys = Object.keys;
 
-  constructor(private _dataService: DataService) {
-  }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
-    this.editing$ = this._dataService.editing$;
+    this._dataService.editing$.subscribe( data => { this.editing = data; });
   }
 }

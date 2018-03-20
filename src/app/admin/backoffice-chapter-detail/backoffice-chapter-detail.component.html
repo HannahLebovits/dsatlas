@@ -1,3 +1,6 @@
-<div>
-    {{ editing$.name | async }}
-</div>
+<table class="table">
+  <tr *ngFor="let key of objectkeys(editing)">
+    <td>{{ key }}</td>
+    <td>{{ editing[key] }}</td>
+  </tr>
+</table>

@@ -1,25 +1,39 @@
-<div class="container scrollable">
-    <table class="table table-light table-sm">
-        <thead>
-        <tr>
-            <th scope="col">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="chapter-search"><i class="fa fa-search"></i></span>
-                    </div>
-                    <input [(ngModel)]="searchFilter" name="searchFilter" title="searchName" type="text" class="form-control" aria-describedby="chapter-search">
-                </div>
-            </th>
-        </tr>
-        </thead>
+<div class="container">
+  <div class="list-wrapper">
+    <div class="list-top">
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="chapter-search"> <i class="fa fa-search"></i> </span>
+        </div>
+        <input [(ngModel)]="searchFilter"
+               name="searchFilter"
+               title="searchName"
+               type="text"
+               class="form-control"
+               aria-describedby="chapter-search">
+      </div>
+
+      <button type="button"
+              class="btn btn-block btn-sm btn-danger"
+              (click)="addChapter()">
+        <i class="fa fa-plus"></i> Add Chapter
+      </button>
+    </div>
+
+    <div class="list-bottom">
+      <table class="table table-light table-sm">
         <tbody>
-            <tr *ngFor="let chapter of chapters">
-                <td>
-                    <button type="button"
-                            class="btn btn-block btn-light"
-                    (click)="selectChapter(chapter)">{{ chapter.name }}</button>
-                </td>
-            </tr>
+        <tr *ngFor="let chapter of chapters">
+          <td>
+            <button type="button"
+                    class="btn btn-block btn-sm btn-light"
+                    (click)="selectChapter(chapter)">{{ chapter.name }}
+            </button>
+          </td>
+        </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 </div>
