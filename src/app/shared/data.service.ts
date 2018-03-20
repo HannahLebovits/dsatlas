@@ -14,10 +14,12 @@ const httpOptions = {
 @Injectable()
 export class DataService {
   chapters$: Observable<ChapterModel[]>;
-  editing$: Observable<ChapterModel>;
+  selected$: Observable<ChapterModel>;
+  editing$: Observable<boolean>;
 
   private _chapters: BehaviorSubject<ChapterModel[]>;
-  private _editing: BehaviorSubject<ChapterModel>;
+  private _selected: BehaviorSubject<ChapterModel>;
+  private _editing: BehaviorSubject<boolean>;
 
   private _headers = new HttpHeaders().append('Content-Type', 'application/json; charset=utf-8');
   private _dataStore: {
@@ -30,9 +32,11 @@ export class DataService {
   constructor(private _http: HttpClient) {
     this._dataStore = { chapters: [] };
     this._chapters = <BehaviorSubject<ChapterModel[]>>new BehaviorSubject([]);
-    this._editing = <BehaviorSubject<ChapterModel>>new BehaviorSubject<ChapterModel>(new ChapterModel({}));
-    this.editing$ = this._editing.asObservable();
+    this._selected = <BehaviorSubject<ChapterModel>>new BehaviorSubject<ChapterModel>(new ChapterModel({}));
+    this._editing = <BehaviorSubject<boolean>>new BehaviorSubject<boolean>(false);
+    this.selected$ = this._selected.asObservable();
     this.chapters$ = this._chapters.asObservable();
+    this.editing$ = this._editing.asObservable();
   }
 
   deleteChapter(id: string) {
@@ -81,21 +85,22 @@ export class DataService {
   }
 
   startEditing(c: ChapterModel) {
-    this._editing.next(c);
-    this.setDirty(this._editing.getValue());
-    console.log(this._editing.getValue().name);
+    this._selected.next(c);
+    this.setDirty(this._selected.getValue());
+    this._editing.next(true);
     return c;
   }
 
   finishEditing() {
     this._dataStore.chapters.forEach((c, i) => {
-      if (c._id === this._editing.getValue()._id) {
-        this._dataStore.chapters[i] = this._editing.getValue();
+      if (c._id === this._selected.getValue()._id) {
+        this._dataStore.chapters[i] = this._selected.getValue();
       }
     });
     this._chapters.next(Object.assign({}, this._dataStore).chapters);
-    this.unsetDirty(this._editing.getValue());
-    this._editing.next(Object.assign(new ChapterModel({})));
+    this.unsetDirty(this._selected.getValue());
+    this._selected.next(Object.assign(new ChapterModel({})));
+    this._editing.next(false);
   }
 
   setNew(c: ChapterModel) {

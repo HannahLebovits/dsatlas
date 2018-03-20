@@ -10,8 +10,6 @@ export class BackOfficeComponent implements OnInit {
   chapters: ChapterModel[];
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.chapters);
-  }
+  ngOnInit() { }
 
 }

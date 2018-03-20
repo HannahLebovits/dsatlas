@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserModel } from '../../shared/model/user.model';
+import { AuthService } from '../../shared/auth/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,8 +7,14 @@ import { UserModel } from '../../shared/model/user.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
-  user: UserModel = new UserModel('', '');
+  user = {
+    email: '',
+    password: ''
+  };
 
+  signIn() {
+    this._authService.login(this.user.email, this.user.password);
+  }
 }

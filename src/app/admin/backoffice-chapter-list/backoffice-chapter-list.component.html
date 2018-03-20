@@ -6,34 +6,32 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="chapter-search"> <i class="fa fa-search"></i> </span>
         </div>
-        <input [(ngModel)]="searchFilter"
+        <input [(ngModel)]="searchFilter.name"
                name="searchFilter"
                title="searchName"
                type="text"
                class="form-control"
-               aria-describedby="chapter-search">
+               aria-describedby="chapter-search"
+               placeholder="Search Chapter Name">
       </div>
 
       <button type="button"
-              class="btn btn-block btn-sm btn-danger"
+              class="btn btn-block btn-success"
               (click)="addChapter()">
         <i class="fa fa-plus"></i> Add Chapter
       </button>
     </div>
 
     <div class="list-bottom">
-      <table class="table table-light table-sm">
-        <tbody>
-        <tr *ngFor="let chapter of chapters">
-          <td>
-            <button type="button"
-                    class="btn btn-block btn-sm btn-light"
-                    (click)="selectChapter(chapter)">{{ chapter.name }}
-            </button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let chapter of chapters | filterBy: searchFilter">
+        <label class="btn btn-block" [ngClass]="{ 'btn-outline-dark' : !isSelected(chapter), 'btn-dark' : isSelected(chapter) }">
+          <input type="radio"
+                 name="radiogroup"
+                 autocomplete="off"
+                 (change)="onSelectionChange(chapter)"
+                 [value]="chapter">{{ chapter.name }}
+        </label>
+      </div>
     </div>
   </div>
 </div>

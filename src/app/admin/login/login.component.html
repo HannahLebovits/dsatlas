@@ -1,23 +1,35 @@
-  <div class="container">
+  <div class="container" style="padding-top: 50px;">
+    <div class="text-center">
       <img src="/assets/img/dsatlas_logo.png" width="200px" />
-      <h3>Login</h3>
-      <form #loginForm="ngForm" class="form">
-          <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text"
-                     class="form-control"
-                     id="email" required
-                     [(ngModel)]="user.email" name="email">
-          </div>
+    </div>
+    <div class="card mx-auto" style="width: 500px;">
+      <h3 class="card-header">Login</h3>
+      <div class="card-body">
+        <form #loginForm="ngForm" class="form">
+            <div class="form-group row">
+              <label for="email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="text"
+                       class="form-control"
+                       id="email" required
+                       [(ngModel)]="user.email" name="email">
+              </div>
+            </div>
 
-          <div class="form-group">
-              <label for="password"></label>
-              <input type="password"
-                     class="form-control"
-                     id="password" required
-              [(ngModel)]="user.password" name="password">
-          </div>
+            <div class="form-group row">
+              <label for="password" class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input type="password"
+                       class="form-control"
+                       id="password" required
+                [(ngModel)]="user.password" name="password">
+              </div>
+            </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <div class="text-right">
+            <button type="submit" class="btn btn-primary" (click)="signIn()"><i class="fa fa-sign-in"></i> Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>

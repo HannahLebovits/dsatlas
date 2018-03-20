@@ -10,11 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BackOfficeChapterListComponent implements OnInit {
   chapters: ChapterModel[];
-  searchFilter;
+  selected;
+
+  searchFilter = {
+    name: ''
+  };
 
   constructor(private _route: ActivatedRoute, private _dataService: DataService) { }
 
-  selectChapter(c: ChapterModel) {
+  isSelected(c: ChapterModel) {
+    return this.selected === c;
+  }
+  onSelectionChange(c: ChapterModel) {
+    this.selected = c;
     this._dataService.startEditing(c);
   }
 

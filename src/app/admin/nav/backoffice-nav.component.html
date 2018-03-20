@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">DSAtlas BackOffice</a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navBarSupportedContent"
+          aria-controls="navBarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          (click)="toggleCollapsed()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [ngClass]="{ 'collapse': collapsed, 'navbar-collapse': true }" id="navBarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="{ active: isActive('/admin/backoffice') }">
+        <a class="nav-link" routerLink="/admin/backoffice" routerLinkActive="active"><i class="fa fa-edit"></i> Edit Chapters</a>
+      </li>
+
+    </ul>
+    <form class="navbar-form navbar-right">
+      <div class="navbar-group">
+        <app-logout></app-logout>
+      </div>
+    </form>
+  </div>
+</nav>

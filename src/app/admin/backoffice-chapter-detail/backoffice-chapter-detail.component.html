@@ -1,6 +1,107 @@
-<table class="table">
-  <tr *ngFor="let key of objectkeys(editing)">
-    <td>{{ key }}</td>
-    <td>{{ editing[key] }}</td>
-  </tr>
-</table>
+<ng-container *ngIf="editing">
+  <div class="container">
+    <div class="card card-body bg-light">
+      <form novalidate [formGroup]="chapterForm">
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+          <div class="col-sm-10">
+            <input type="text"
+                   id="name"
+                   class="form-control form-control-sm"
+                   formControlName="name"
+                   value="{{ selected.name }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="city" class="col-sm-2 col-form-label col-form-label-sm">City</label>
+          <div class="col-sm-10">
+            <input type="text"
+                   id="city"
+                   class="form-control form-control-sm"
+                   formControlName="city"
+                   value="{{ selected.city }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="state" class="col-sm-2 col-form-label col-form-label-sm">State</label>
+          <div class="col-sm-10">
+            <select id="state"
+                    class="form-control form-control-sm"
+                    formControlName="state"
+                    [(ngModel)]="selected.state">
+              <option value="">Select a state</option>
+              <option *ngFor="let state of states" [value]="state">{{ stateName(state) }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="lat" class="col-sm-2 col-form-label col-form-label-sm">Lat</label>
+          <div class="col-sm-10">
+            <input type="text"
+                   id="lat"
+                   class="form-control form-control-sm"
+                   formControlName="lat"
+                   value="{{ selected.lat }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="lon" class="col-sm-2 col-form-label col-form-label-sm">Lon</label>
+          <div class="col-sm-10">
+            <input type="text"
+                   id="lon"
+                   class="form-control form-control-sm"
+                   formControlName="lon"
+                   value="{{ selected.lon }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="twitter" class="col-sm-2 col-form-label col-form-label-sm">Twitter</label>
+          <div class="col-sm-10">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text"
+                     id="twitter"
+                     class="form-control form-control-sm"
+                     formControlName="twitter"
+                     value="{{ selected.twitter }}">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="facebook" class="col-sm-2 col-form-label col-form-label-sm">Facebook</label>
+          <div class="col-sm-10">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">facebook.com/</div>
+              </div>
+              <input type="text"
+                     id="facebook"
+                     class="form-control form-control-sm"
+                     formControlName="facebook"
+                     value="{{ selected.facebook }}">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="website" class="col-sm-2 col-form-label col-form-label-sm">Website</label>
+          <div class="col-sm-10">
+            <input type="text"
+                   id="website"
+                   class="form-control form-control-sm"
+                   formControlName="website"
+                   value="{{ selected.website }}">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-container>
