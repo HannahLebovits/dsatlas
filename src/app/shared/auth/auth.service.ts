@@ -15,17 +15,16 @@ interface User {
 @Injectable()
 export class AuthService {
   user: Observable<User>;
+  authState: FirebaseAuthState = null;
 
   constructor(private _afAuth: AngularFireAuth,
               private _afs: AngularFirestore,
               private _router: Router) {
-    this.user = this._afAuth.authState.switchMap(user => {
-      if (user) {
-        return this._afs.doc<User>(`users/${user.uid}`).valueChanges();
-      } else {
-        return Observable.of(null);
-      }
-    });
+    this.authState = this._afAuth.authState;
+  }
+
+  get authenticated(): boolean {
+    return this.authState !== null;
   }
 
   login(email: string, password: string) {
@@ -34,6 +33,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('success!');
+        this._router.navigate(['/admin/backoffice']);
       })
       .catch(err => {
         console.log('bogus :( ', err.message);

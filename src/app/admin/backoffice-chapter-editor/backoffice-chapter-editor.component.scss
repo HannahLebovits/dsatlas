@@ -1,0 +1,13 @@
+.left-panel {
+  float: left;
+  width: 400px;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.right-panel {
+  padding-left: 10px;
+  overflow: hidden;
+  height: 100%;
+}

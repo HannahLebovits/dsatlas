@@ -47,8 +47,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuardService } from './shared/auth/auth.guard';
 import { AuthService } from './shared/auth/auth.service';
-
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { BackOfficeChapterEditorComponent } from './admin/backoffice-chapter-editor/backoffice-chapter-editor.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAccxleX1mLSZFdY5vReEz2V38jUq3ezkw',
@@ -73,7 +73,8 @@ const firebaseConfig = {
     BackOfficeComponent,
     BackOfficeChapterDetailComponent,
     BackOfficeChapterListComponent,
-    BackOfficeNavComponent
+    BackOfficeNavComponent,
+    BackOfficeChapterEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +95,7 @@ const firebaseConfig = {
     NgbModule.forRoot(),
     RecaptchaModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule
   ],
   providers: [

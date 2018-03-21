@@ -15,6 +15,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { LandingComponent } from './site/landing/landing.component';
 import { BackOfficeComponent } from './admin/backoffice/backoffice.component';
 import { AuthGuardService as AuthGuard } from './shared/auth/auth.guard';
+import { BackOfficeChapterEditorComponent } from './admin/backoffice-chapter-editor/backoffice-chapter-editor.component';
 
 const appRoutes: Routes = [
   { path: '',
@@ -43,12 +44,14 @@ const appRoutes: Routes = [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'backoffice',
-        canActivate: [AuthGuard],
-        resolve: {
-          chapters: ChapterModelResolver
-        },
+        canActivate: [ AuthGuard ],
+        resolve: { chapters: ChapterModelResolver },
         children: [
-          { path: '', component: BackOfficeComponent }
+          { path: '', component: BackOfficeComponent,
+            children: [
+              { path: '', redirectTo: 'list', component: BackOfficeChapterEditorComponent }
+            ]
+          }
         ]
       }
     ]
