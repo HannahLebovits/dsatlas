@@ -1,107 +1,137 @@
 <ng-container *ngIf="editing">
   <div class="container">
-    <div class="card card-body bg-light">
-      <form novalidate [formGroup]="chapterForm">
-        <div class="form-group row">
-          <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
-          <div class="col-sm-10">
-            <input type="text"
-                   id="name"
-                   class="form-control form-control-sm"
-                   formControlName="name"
-                   value="{{ selected.name }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="city" class="col-sm-2 col-form-label col-form-label-sm">City</label>
-          <div class="col-sm-10">
-            <input type="text"
-                   id="city"
-                   class="form-control form-control-sm"
-                   formControlName="city"
-                   value="{{ selected.city }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="state" class="col-sm-2 col-form-label col-form-label-sm">State</label>
-          <div class="col-sm-10">
-            <select id="state"
-                    class="form-control form-control-sm"
-                    formControlName="state"
-                    [(ngModel)]="selected.state">
-              <option value="">Select a state</option>
-              <option *ngFor="let state of states" [value]="state">{{ stateName(state) }}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="lat" class="col-sm-2 col-form-label col-form-label-sm">Lat</label>
-          <div class="col-sm-10">
-            <input type="text"
-                   id="lat"
-                   class="form-control form-control-sm"
-                   formControlName="lat"
-                   value="{{ selected.lat }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="lon" class="col-sm-2 col-form-label col-form-label-sm">Lon</label>
-          <div class="col-sm-10">
-            <input type="text"
-                   id="lon"
-                   class="form-control form-control-sm"
-                   formControlName="lon"
-                   value="{{ selected.lon }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="twitter" class="col-sm-2 col-form-label col-form-label-sm">Twitter</label>
-          <div class="col-sm-10">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
+    <div class="card bg-light">
+      <div class="card-header">
+        <h4>Edit Chapter Details</h4>
+      </div>
+      <div class="card-body">
+        <form novalidate [formGroup]="chapterForm">
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+            <div class="col-sm-10">
               <input type="text"
-                     id="twitter"
+                     id="name"
                      class="form-control form-control-sm"
-                     formControlName="twitter"
-                     value="{{ selected.twitter }}">
+                     formControlName="name"
+                     [(ngModel)]="selected.name"
+                     value="{{ selected.name }}">
             </div>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <label for="facebook" class="col-sm-2 col-form-label col-form-label-sm">Facebook</label>
-          <div class="col-sm-10">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">facebook.com/</div>
-              </div>
+          <div class="form-group row">
+            <label for="members" class="col-sm-2 col-form-label col-form-label-sm">Members</label>
+            <div class="col-sm-10">
               <input type="text"
-                     id="facebook"
+                     id="members"
                      class="form-control form-control-sm"
-                     formControlName="facebook"
-                     value="{{ selected.facebook }}">
+                     formControlName="members"
+                     [(ngModel)]="selected.members"
+                     value="{{ selected.members }}">
             </div>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <label for="website" class="col-sm-2 col-form-label col-form-label-sm">Website</label>
-          <div class="col-sm-10">
-            <input type="text"
-                   id="website"
-                   class="form-control form-control-sm"
-                   formControlName="website"
-                   value="{{ selected.website }}">
+          <div class="form-group row">
+            <label for="city" class="col-sm-2 col-form-label col-form-label-sm">City</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     id="city"
+                     class="form-control form-control-sm"
+                     formControlName="city"
+                     [(ngModel)]="selected.city"
+                     value="{{ selected.city }}">
+            </div>
           </div>
-        </div>
-      </form>
+
+          <div class="form-group row">
+            <label for="state" class="col-sm-2 col-form-label col-form-label-sm">State</label>
+            <div class="col-sm-10">
+              <select id="state"
+                      class="form-control form-control-sm"
+                      formControlName="state"
+                      [(ngModel)]="selected.state">
+                <option value="">Select a state</option>
+                <option *ngFor="let state of states" [value]="state">{{ stateName(state) }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="lat" class="col-sm-2 col-form-label col-form-label-sm">Lat</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     id="lat"
+                     class="form-control form-control-sm"
+                     formControlName="lat"
+                     [(ngModel)]="selected.lat"
+                     value="{{ selected.lat }}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="lon" class="col-sm-2 col-form-label col-form-label-sm">Lon</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     id="lon"
+                     class="form-control form-control-sm"
+                     formControlName="lon"
+                     [(ngModel)]="selected.lon"
+                     value="{{ selected.lon }}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="twitter" class="col-sm-2 col-form-label col-form-label-sm">Twitter</label>
+            <div class="col-sm-10">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">@</div>
+                </div>
+                <input type="text"
+                       id="twitter"
+                       class="form-control form-control-sm"
+                       formControlName="twitter"
+                       [(ngModel)]="selected.twitter"
+                       value="{{ selected.twitter }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="facebook" class="col-sm-2 col-form-label col-form-label-sm">Facebook</label>
+            <div class="col-sm-10">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">facebook.com/</div>
+                </div>
+                <input type="text"
+                       id="facebook"
+                       class="form-control form-control-sm"
+                       formControlName="facebook"
+                       [(ngModel)]="selected.facebook"
+                       value="{{ selected.facebook }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="website" class="col-sm-2 col-form-label col-form-label-sm">Website</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     id="website"
+                     class="form-control form-control-sm"
+                     formControlName="website"
+                     [(ngModel)]="selected.website"
+                     value="{{ selected.website }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="save()"><i class="fa fa-save"></i> Save</button>
+            <button type="button" class="btn btn-danger" (click)="delete()"><i class="fa fa-trash"></i> Delete</button>
+          </div>
+
+        </form>
+      </div>
     </div>
   </div>
 </ng-container>

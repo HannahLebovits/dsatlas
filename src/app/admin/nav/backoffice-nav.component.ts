@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class BackOfficeNavComponent {
   constructor() { }
-
+  collapsed = true;
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
   isActive(state: string) { }
 }

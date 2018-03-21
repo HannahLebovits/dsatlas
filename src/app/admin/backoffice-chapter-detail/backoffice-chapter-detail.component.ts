@@ -21,8 +21,10 @@ export class BackOfficeChapterDetailComponent implements OnInit {
     this._dataService.editing$.subscribe( editing => { this.editing = editing; });
     this._dataService.selected$.subscribe( selected => { this.selected = selected; });
     this.states = this._statesService.iso2s();
+
     this.chapterForm = new FormGroup({
       name: new FormControl('', Validators.required),
+      members: new FormControl(),
       city: new FormControl('', Validators.required),
       state: new FormControl('', Validators.required),
       lat: new FormControl(0, Validators.required),
@@ -35,5 +37,13 @@ export class BackOfficeChapterDetailComponent implements OnInit {
 
   stateName(iso2) {
     return this._statesService.name(iso2);
+  }
+
+  save() {
+    this._dataService.updateChapter(this.selected);
+  }
+
+  delete() {
+    this._dataService.deleteChapter(this.selected._id);
   }
 }

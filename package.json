@@ -4,7 +4,7 @@
     "name": "Chris Engelsma",
     "email": "chris.engelsma@gmail.com"
   },
-  "version": "3.0.1",
+  "version": "2.1.5",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -43,6 +43,7 @@
     "method-override": "^2.3.10",
     "moment": "^2.20.1",
     "mongoose": "^5.0.7",
+    "mongoose-uuid2": "^2.1.0",
     "morgan": "^1.9.0",
     "ngx-filter-pipe": "^2.1.0",
     "ngx-order-pipe": "^2.0.1",
@@ -55,6 +56,7 @@
     "zone.js": "^0.8.19",
     "angularfire2": "^5.0.0-rc.6",
     "firebase": "^4.12.0",
+    "ngx-toastr": "^8.3.0",
     "angular2-uuid": "^1.1.1"
   },
   "devDependencies": {

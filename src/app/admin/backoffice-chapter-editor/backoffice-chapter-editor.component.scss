@@ -1,13 +1,21 @@
 .left-panel {
   float: left;
+  padding-top: 10px;
   width: 400px;
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: white;
 }
 
 .right-panel {
+  padding-top: 10px;
   padding-left: 10px;
   overflow: hidden;
   height: 100%;
+}
+
+
+.under-fixed-navbar {
+  background-color: lightgrey;
 }

@@ -10,7 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BackOfficeChapterListComponent implements OnInit {
   chapters: ChapterModel[];
-  selected;
+  selected: ChapterModel = new ChapterModel({});
+  sortTag = 'name';
+  sortReverse = false;
 
   searchFilter = {
     name: ''
@@ -31,6 +33,7 @@ export class BackOfficeChapterListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.chapters = this._route.snapshot.parent.data[ 'chapters' ];
+    this._dataService.setChapters(this._route.snapshot.parent.data['chapters']);
+    this._dataService.chapters$.subscribe(chapters => { this.chapters = chapters; });
   }
 }

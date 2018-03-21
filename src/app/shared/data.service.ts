@@ -6,6 +6,7 @@ import { UUID } from 'angular2-uuid';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,14 +23,10 @@ export class DataService {
   private _editing: BehaviorSubject<boolean>;
 
   private _headers = new HttpHeaders().append('Content-Type', 'application/json; charset=utf-8');
-  private _dataStore: {
-    chapters: ChapterModel[]
-  };
-  private _dirtyChapters: ChapterModel[] = [];
-  private _newChapters: ChapterModel[] = [];
+  private _dataStore: { chapters: ChapterModel[] };
+  private _newChapter: ChapterModel;
 
-
-  constructor(private _http: HttpClient) {
+  constructor(private _toastr: ToastrService, private _http: HttpClient) {
     this._dataStore = { chapters: [] };
     this._chapters = <BehaviorSubject<ChapterModel[]>>new BehaviorSubject([]);
     this._selected = <BehaviorSubject<ChapterModel>>new BehaviorSubject<ChapterModel>(new ChapterModel({}));
@@ -39,122 +36,92 @@ export class DataService {
     this.editing$ = this._editing.asObservable();
   }
 
+  setChapters(chapters: ChapterModel[]) {
+    this._dataStore.chapters = chapters;
+    this._chapters.next(Object.assign({}, this._dataStore).chapters);
+  }
+
   deleteChapter(id: string) {
-    this._http.delete<ChapterModel>(`/api/machines/del/${id}`)
+    this._http.delete<ChapterModel>(`/api/chapters/${id}`)
       .subscribe(response => {
         this._dataStore.chapters.forEach((c, i) => {
           if (c._id === id) { this._dataStore.chapters.splice(i, 1); }
         });
-        this._chapters.next(Object.assign({}, this._dataStore).chapters);
+        this.stopEditing();
+        this._toastr.success('Successfully deleted chapter', 'Success!');
       }, error => {
+        this._toastr.success('Failed to delete chapter', 'Uh oh!');
         console.error(error);
       });
   }
 
   updateChapter(chap: ChapterModel) {
+    const isNew = this.isNew(chap);
     this._http.post<ChapterModel>(`/api/chapters/update`, JSON.stringify(chap), { headers: this._headers })
       .subscribe(data => {
-        this._dataStore.chapters.forEach((c, i) => {
-          if (c._id === data._id) { this._dataStore.chapters[i] = data; }
-        });
-        this._chapters.next(Object.assign({}, this._dataStore).chapters);
+        if (isNew) {
+          this._dataStore.chapters.push(data);
+          this.unsetNew();
+        } else {
+          this._dataStore.chapters.forEach((c, i) => {
+            if (c._id === data._id) { this._dataStore.chapters[i] = data; }
+          });
+        }
+        this.stopEditing();
+        this._toastr.success('Successfully updated chapter', 'Success!');
       }, error => {
-        console.error(error);
-      });
-  }
-
-  createChapter(chap: ChapterModel) {
-    this._http.post<ChapterModel>(`/api/chapters/add`, JSON.stringify(chap), { headers: this._headers })
-      .subscribe(data => {
-        this._dataStore.chapters.forEach((c, i) => {
-          if (c._id === data._id) { this._dataStore.chapters[i] = data; }
-        });
-        this._chapters.next(Object.assign({}, this._dataStore).chapters);
-      }, error => {
+        this._toastr.success('Failed to update chapter', 'Uh oh!');
         console.error(error);
       });
   }
 
   addEmptyChapter() {
-    const c = new ChapterModel({
-      _id: UUID.UUID(),
-      name: 'New Chapter' });
+    const c = new ChapterModel({ _id: UUID.UUID() });
     this._dataStore.chapters.push(c);
     this.setNew(c);
-    this._chapters.next(Object.assign({}, this._dataStore).chapters);
+    this.startEditing(c);
   }
 
   startEditing(c: ChapterModel) {
-    this._selected.next(c);
-    this.setDirty(this._selected.getValue());
+    this._selected.next(Object.assign({}, c));
     this._editing.next(true);
     return c;
   }
 
-  finishEditing() {
-    this._dataStore.chapters.forEach((c, i) => {
-      if (c._id === this._selected.getValue()._id) {
-        this._dataStore.chapters[i] = this._selected.getValue();
-      }
-    });
+  stopEditing() {
     this._chapters.next(Object.assign({}, this._dataStore).chapters);
-    this.unsetDirty(this._selected.getValue());
-    this._selected.next(Object.assign(new ChapterModel({})));
     this._editing.next(false);
   }
 
-  setNew(c: ChapterModel) {
-    if (!this.isNew(c)) {
-      this._newChapters.push(c);
-      this.setDirty(c);
-    }
-  }
-
-  unsetNew(c: ChapterModel) {
-    if (this.isNew(c)) {
-      this._newChapters.splice(this._newChapters.indexOf(c));
-      this.unsetDirty(c);
-    }
-  }
-
   isNew(c: ChapterModel) {
-    return this._newChapters.some(x => x._id === c._id);
+    return this._newChapter._id === c._id;
   }
 
-  setDirty(c: ChapterModel) {
-    if (!this.isDirty(c)) {
-      this._dirtyChapters.push(c);
-    }
+  setNew(c: ChapterModel) {
+    this._newChapter = c;
   }
 
-  isDirty(c: ChapterModel) {
-    return this._dirtyChapters.some(x => x._id === c._id);
+  unsetNew() {
+    this._newChapter = null;
   }
 
-  unsetDirty(c: ChapterModel) {
-    if (this.isDirty(c)) {
-      this._dirtyChapters.splice(this._dirtyChapters.indexOf(c));
-    }
-  }
-
-  getChapters() {
+  getChapters(): any {
     return this._http.get<ChapterModel[]>('/api/chapters');
   }
 
-  getTotals(value: string) {
+  getTotals(value: string): any {
     return this._http.get<any>(`/api/totals/${value}`);
   }
 
-  getGeoJson(value: string) {
+  getGeoJson(value: string): any {
     return this._http.get<any>(`/api/geojson/${value}`);
   }
 
-  getStateNumbers() {
+  getStateNumbers(): any {
     return this._http.get<any>(`/api/statenumbers`);
   }
 
-  sendEmail(data) {
+  sendEmail(data): any {
     return this._http.post(`/api/email`, data, httpOptions);
   }
-
 }

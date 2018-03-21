@@ -22,16 +22,16 @@
       </button>
     </div>
 
-    <div class="list-bottom">
-      <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let chapter of chapters | filterBy: searchFilter">
-        <label class="btn btn-block" [ngClass]="{ 'btn-outline-dark' : !isSelected(chapter), 'btn-dark' : isSelected(chapter) }">
-          <input type="radio"
-                 name="radiogroup"
-                 autocomplete="off"
-                 (change)="onSelectionChange(chapter)"
-                 [value]="chapter">{{ chapter.name }}
-        </label>
-      </div>
+    <div class="list-bottom text-center" style="font-size: 10pt;">
+      <table class="table table-sm table-hover">
+        <tr *ngFor="let chapter of chapters | filterBy: searchFilter | orderBy:sortTag:sortReverse"
+            [ngClass]="{ 'table-primary': selected._id === chapter._id}"
+            (click)="onSelectionChange(chapter)">
+          <td class="clickable">
+            {{ chapter.name }}
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

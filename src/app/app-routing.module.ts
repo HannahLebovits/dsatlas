@@ -14,7 +14,8 @@ import { StateTotalsResolver,
 import { LoginComponent } from './admin/login/login.component';
 import { LandingComponent } from './site/landing/landing.component';
 import { BackOfficeComponent } from './admin/backoffice/backoffice.component';
-import { AuthGuardService as AuthGuard } from './shared/auth/auth.guard';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { AuthChildGuard } from './shared/auth/auth.child.guard';
 import { BackOfficeChapterEditorComponent } from './admin/backoffice-chapter-editor/backoffice-chapter-editor.component';
 
 const appRoutes: Routes = [
@@ -45,11 +46,13 @@ const appRoutes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'backoffice',
         canActivate: [ AuthGuard ],
+        canActivateChild: [ AuthChildGuard ],
         resolve: { chapters: ChapterModelResolver },
         children: [
           { path: '', component: BackOfficeComponent,
             children: [
-              { path: '', redirectTo: 'list', component: BackOfficeChapterEditorComponent }
+              { path: '', redirectTo: '/admin/backoffice/list', pathMatch: 'full' },
+              { path: 'list', component: BackOfficeChapterEditorComponent }
             ]
           }
         ]

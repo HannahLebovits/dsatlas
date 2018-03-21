@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { LoadingModule, ANIMATION_TYPES } from 'ngx-loading';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { D3Service } from 'd3-ng2-service';
 import { DataService } from './shared/data.service';
@@ -45,10 +46,11 @@ import { StatesService } from './shared/states.service';
 import { LogoutComponent } from './admin/logout/logout.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
-import { AuthGuardService } from './shared/auth/auth.guard';
+import { AuthGuard } from './shared/auth/auth.guard';
 import { AuthService } from './shared/auth/auth.service';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { BackOfficeChapterEditorComponent } from './admin/backoffice-chapter-editor/backoffice-chapter-editor.component';
+import { AuthChildGuard } from './shared/auth/auth.child.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAccxleX1mLSZFdY5vReEz2V38jUq3ezkw',
@@ -78,6 +80,7 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
@@ -92,15 +95,16 @@ const firebaseConfig = {
     ReactiveFormsModule,
     RecaptchaFormsModule,
     OrderModule,
+    ToastrModule.forRoot({ timeOut: 2000 }),
     NgbModule.forRoot(),
     RecaptchaModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
     AngularFireAuthModule
   ],
   providers: [
     AuthService,
-    AuthGuardService,
+    AuthGuard,
+    AuthChildGuard,
     D3Service,
     DataService,
     ColorMapService,

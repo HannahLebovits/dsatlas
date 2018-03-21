@@ -21,12 +21,14 @@ app.set('view engine', 'pug');
 // configuration =================
 var creds = config.get('mongo.prod');
 
+/*
 var mongoUrl = 'mongodb://' + creds.user +
   ':' + creds.pass +
   '@' + creds.host +
   ':' + creds.port +
   '/' + creds.db;
-//var mongoUrl = 'mongodb://127.0.0.1:27017/dsatlas';
+  */
+var mongoUrl = 'mongodb://127.0.0.1:27017/dsatlas';
 
 mongoose.connect(mongoUrl,  function(err) {
   if (err) { console.log(err); }
@@ -48,7 +50,6 @@ app.listen(port, function() {
 var Schema = mongoose.Schema;
 
 var chapterSchema = new Schema({
-  _id: String,
   name: String,
   city: String,
   state: String,
@@ -58,7 +59,7 @@ var chapterSchema = new Schema({
   website: String,
   facebook: String,
   twitter: String
-});
+}, { versionKey: false });
 
 var Chapter = mongoose.model('chapters', chapterSchema);
 
@@ -118,6 +119,22 @@ app.get('/api/statenumbers', function(req,res) {
   fs.readFile(__dirname + '/dist/assets/data/const/state-numbers.json', 'utf8', function(err,data) {
     if (err) throw err;
     res.json(JSON.parse(data));
+  });
+});
+
+app.post('/api/chapters/update', function(req,res) {
+  var update = new Chapter(req.body);
+  Chapter.findByIdAndUpdate(update._id, update, { 'new': true, 'upsert': true })
+    .exec(function(err, result) {
+      if (err) throw err;
+      res.send(result);
+    });
+});
+
+app.delete('/api/chapters/:id', function(req,res) {
+  Chapter.deleteOne({ _id: req.params['id'] }, function(err) {
+    if (err) throw err;
+    res.send({ status: 'OK' });
   });
 });
 
