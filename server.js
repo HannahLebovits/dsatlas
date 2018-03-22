@@ -21,18 +21,18 @@ app.set('view engine', 'pug');
 // configuration =================
 var creds = config.get('mongo.prod');
 
-/*
-var mongoUrl = 'mongodb://' + creds.user +
-  ':' + creds.pass +
-  '@' + creds.host +
-  ':' + creds.port +
-  '/' + creds.db;
-  */
-var mongoUrl = 'mongodb://127.0.0.1:27017/dsatlas';
+var mongoUrl = function(user, pass) {
+  return 'mongodb://' + user +
+    ':' + pass +
+    '@' + creds.host +
+    ':' + creds.port +
+    '/' + creds.db;
+};
 
-mongoose.connect(mongoUrl,  function(err) {
-  if (err) { console.log(err); }
-});
+console.log(creds);
+mongoose.connect(mongoUrl(creds.user, creds.pass))
+  .then()
+  .catch(function(err) { console.log(err); });
 
 app.use(express.static(path.join(__dirname,"dist")));
 app.use(morgan('dev'));
@@ -123,12 +123,18 @@ app.get('/api/statenumbers', function(req,res) {
 });
 
 app.post('/api/chapters/update', function(req,res) {
-  var update = new Chapter(req.body);
-  Chapter.findByIdAndUpdate(update._id, update, { 'new': true, 'upsert': true })
-    .exec(function(err, result) {
-      if (err) throw err;
-      res.send(result);
-    });
+//  mongoose.connect(mongoUrl('dsatlas', 'DPkcKMuXn6bNA4k948fmxh4FR2VzDv'))
+//    .then( function() {
+      var update = new Chapter(req.body);
+
+      Chapter.findByIdAndUpdate(update._id, update, {'new': true, 'upsert': true})
+        .exec(function (err, result) {
+          if (err) throw err;
+          res.send(result);
+        });
+
+//    })
+//    .catch(function(err) { console.log(err); });
 });
 
 app.delete('/api/chapters/:id', function(req,res) {

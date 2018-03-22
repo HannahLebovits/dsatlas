@@ -50,7 +50,7 @@ export class DataService {
         this.stopEditing();
         this._toastr.success('Successfully deleted chapter', 'Success!');
       }, error => {
-        this._toastr.success('Failed to delete chapter', 'Uh oh!');
+        this._toastr.error('Failed to delete chapter', 'Uh oh!');
         console.error(error);
       });
   }
@@ -70,7 +70,7 @@ export class DataService {
         this.stopEditing();
         this._toastr.success('Successfully updated chapter', 'Success!');
       }, error => {
-        this._toastr.success('Failed to update chapter', 'Uh oh!');
+        this._toastr.error('Failed to update chapter', 'Uh oh!');
         console.error(error);
       });
   }
@@ -94,7 +94,9 @@ export class DataService {
   }
 
   isNew(c: ChapterModel) {
-    return this._newChapter._id === c._id;
+    if (this._newChapter) {
+      return this._newChapter._id === c._id;
+    }
   }
 
   setNew(c: ChapterModel) {
