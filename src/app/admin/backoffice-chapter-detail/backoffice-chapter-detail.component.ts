@@ -29,9 +29,11 @@ export class BackOfficeChapterDetailComponent implements OnInit {
       state: new FormControl('', Validators.required),
       lat: new FormControl(0, Validators.required),
       lon: new FormControl(0, Validators.required),
-      twitter: new FormControl(),
-      facebook: new FormControl(),
-      website: new FormControl()
+      twitter: new FormControl(''),
+      facebook: new FormControl(''),
+      website: new FormControl(''),
+      email: new FormControl(''),
+      tel: new FormControl('')
     });
   }
 

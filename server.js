@@ -58,7 +58,9 @@ var chapterSchema = new Schema({
   lon: Number,
   website: String,
   facebook: String,
-  twitter: String
+  twitter: String,
+  email: String,
+  tel: String
 }, { versionKey: false });
 
 var Chapter = mongoose.model('chapters', chapterSchema);

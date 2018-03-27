@@ -11,6 +11,8 @@ export class ChapterModel {
   facebook: string;
   twitter: string;
   website: string;
+  email: string;
+  tel: string;
   LatLng: LatLng;
 
   constructor(props?: any) {
@@ -24,5 +26,7 @@ export class ChapterModel {
     this.facebook = props.facebook;
     this.twitter = props.twitter;
     this.website = props.website;
+    this.email = props.email;
+    this.tel = props.tel;
   }
 }

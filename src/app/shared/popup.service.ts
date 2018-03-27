@@ -16,6 +16,14 @@ export class PopupService {
     return '<div><a href="' + link + '" target="_blank"><i class="fa fa-globe"></i> ' + link + '</a></div>';
   }
 
+  static emailLink(link: string) {
+    return '<div><a href="mailto:' + link + '" target="_blank"><i class="fa fa-envelope"></i> ' + link + '</a></div>';
+  }
+
+  static telLink(link: string) {
+    return '<div><a href="tel:' + link + '"><i class="fa fa-phone"></i> ' +  link + '</a></div>';
+  }
+
   makePopup(d) {
     let p =
       '<div class="popup-container"><h3>' + d.name + '</h3>' +
@@ -31,6 +39,8 @@ export class PopupService {
     if (d.twitter) { p +=  PopupService.twitterLink(d.twitter); }
     if (d.facebook) { p += PopupService.facebookLink(d.facebook); }
     if (d.website) { p +=  PopupService.websiteLink(d.website); }
+    if (d.email) { p += PopupService.emailLink(d.email); }
+    if (d.tel) { p += PopupService.telLink(d.tel); }
 
     p += '</div>';
 
