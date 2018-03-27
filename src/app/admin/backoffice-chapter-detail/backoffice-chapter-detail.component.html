@@ -145,7 +145,7 @@
                      class="form-control form-control-sm"
                      formControlName="tel"
                      [(ngModel)]="selected.tel"
-                     value="{{ selected.tel }}">
+                     value="{{ selected.tel | phone }}">
             </div>
           </div>
           <div class="form-group">

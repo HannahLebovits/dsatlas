@@ -3,11 +3,13 @@ import { ChapterModel } from '../../shared/model/chapter.model';
 import { DataService } from '../../shared/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StatesService } from '../../shared/states.service';
+import { PhonePipe } from '../../shared/phone.pipe';
 
 @Component({
   selector: 'app-backoffice-chapter-detail',
   templateUrl: './backoffice-chapter-detail.component.html',
-  styleUrls: ['./backoffice-chapter-detail.component.scss']
+  styleUrls: ['./backoffice-chapter-detail.component.scss'],
+  pipes: [ PhonePipe ]
 })
 export class BackOfficeChapterDetailComponent implements OnInit {
   editing = false;

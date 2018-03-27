@@ -21,6 +21,7 @@ app.set('view engine', 'pug');
 // configuration =================
 var creds = config.get('mongo.prod');
 
+/*
 var mongoUrl = function(user, pass) {
   return 'mongodb://' + user +
     ':' + pass +
@@ -28,9 +29,11 @@ var mongoUrl = function(user, pass) {
     ':' + creds.port +
     '/' + creds.db;
 };
+*/
+var mongoUrl = 'mongodb://127.0.0.1:27017/dsatlas';
 
-console.log(creds);
-mongoose.connect(mongoUrl(creds.user, creds.pass))
+//mongoose.connect(mongoUrl(creds.user, creds.pass))
+mongoose.connect(mongoUrl)
   .then()
   .catch(function(err) { console.log(err); });
 
