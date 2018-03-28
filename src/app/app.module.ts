@@ -51,6 +51,7 @@ import { AuthService } from './shared/auth/auth.service';
 import { BackOfficeChapterEditorComponent } from './admin/backoffice-chapter-editor/backoffice-chapter-editor.component';
 import { AuthChildGuard } from './shared/auth/auth.child.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PhonePipe } from './shared/phone.pipe';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAccxleX1mLSZFdY5vReEz2V38jUq3ezkw',
@@ -76,7 +77,8 @@ const firebaseConfig = {
     BackOfficeChapterDetailComponent,
     BackOfficeChapterListComponent,
     BackOfficeNavComponent,
-    BackOfficeChapterEditorComponent
+    BackOfficeChapterEditorComponent,
+    PhonePipe,
   ],
   imports: [
     BrowserModule,

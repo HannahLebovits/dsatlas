@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChapterModel } from '../../shared/model/chapter.model';
 
 @Component({
