@@ -122,7 +122,8 @@ const firebaseConfig = {
     CountyTotalsResolver,
     DistrictTotalsResolver,
     StatesGeoJsonResolver,
-    StateNumbersResolver
+    StateNumbersResolver,
+    PhonePipe
   ],
   bootstrap: [ AppComponent ]
 })

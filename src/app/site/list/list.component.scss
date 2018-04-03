@@ -1,5 +1,9 @@
 @import '../../globals.scss';
 
+.under-fixed-navbar-scroll.under-fixed-navbar {
+  overflow: auto;
+}
+
 td.chapter-link {
   width: 33%;
   border-top: none !important;

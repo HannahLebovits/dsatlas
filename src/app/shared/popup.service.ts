@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
+import { PhonePipe } from './phone.pipe';
 
 @Injectable()
 export class PopupService {
-  constructor() {}
 
-  static facebookLink(link: string) {
+  constructor(private _phonePipe: PhonePipe) {}
+
+  facebookLink(link: string) {
     return '<div><a href="https://facebook.com/' + link + '" target="_blank"><i class="fa fa-facebook"></i> ' + link + ' </a></div>';
   }
 
-  static twitterLink(link: string) {
+  twitterLink(link: string) {
     return '<div><a href="https://twitter.com/' + link + '" target="_blank"><i class="fa fa-twitter"></i> @' + link + '</a></div>';
   }
 
-  static websiteLink(link: string) {
+  websiteLink(link: string) {
     return '<div><a href="' + link + '" target="_blank"><i class="fa fa-globe"></i> ' + link + '</a></div>';
   }
 
-  static emailLink(link: string) {
+  emailLink(link: string) {
     return '<div><a href="mailto:' + link + '" target="_blank"><i class="fa fa-envelope"></i> ' + link + '</a></div>';
   }
 
-  static telLink(link: string) {
-    return '<div><a href="tel:' + link + '"><i class="fa fa-phone"></i> ' +  link + '</a></div>';
+  telLink(tel: string) {
+    return '<div><a href="tel:' + tel + '"><i class="fa fa-phone"></i> ' + this._phonePipe.transform(tel) + '</a></div>';
   }
 
   makePopup(d) {
@@ -36,11 +38,11 @@ export class PopupService {
     }
 
     if (d.members > 0) { p += '<div class="popup-members-line">' + d.members + ' members</div>'; }
-    if (d.twitter) { p +=  PopupService.twitterLink(d.twitter); }
-    if (d.facebook) { p += PopupService.facebookLink(d.facebook); }
-    if (d.website) { p +=  PopupService.websiteLink(d.website); }
-    if (d.email) { p += PopupService.emailLink(d.email); }
-    if (d.tel) { p += PopupService.telLink(d.tel); }
+    if (d.twitter) { p +=  this.twitterLink(d.twitter); }
+    if (d.facebook) { p += this.facebookLink(d.facebook); }
+    if (d.website) { p +=  this.websiteLink(d.website); }
+    if (d.email) { p += this.emailLink(d.email); }
+    if (d.tel) { p += this.telLink(d.tel); }
 
     p += '</div>';
 

@@ -42,7 +42,7 @@ export class BackOfficeChapterDetailComponent implements OnInit {
   }
 
   save() {
-    this.selected.tel = this.selected.tel.replace(/\D+/g, '');
+    if (this.selected.tel) { this.selected.tel = this.selected.tel.replace(/\D+/g, ''); }
     this._dataService.updateChapter(this.selected);
   }
 
