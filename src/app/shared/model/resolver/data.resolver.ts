@@ -27,6 +27,14 @@ export class DistrictTotalsResolver implements Resolve<any> {
 }
 
 @Injectable()
+export class ElectedModelResolver implements Resolve<any> {
+  constructor(private _dataService: DataService) { }
+  resolve(route: ActivatedRouteSnapshot) {
+    return this._dataService.getElected();
+  }
+}
+
+@Injectable()
 export class StateNumbersResolver implements Resolve<any> {
   constructor(private _dataService: DataService) { }
   resolve(route: ActivatedRouteSnapshot) {

@@ -7,10 +7,13 @@ import { ChapterModelResolver } from './shared/model/resolver/chapter.model.reso
 import { CountiesGeoJsonResolver,
          DistrictsGeoJsonResolver,
          StatesGeoJsonResolver } from './shared/model/resolver/geojson.resolver';
-import { StateTotalsResolver,
-         CountyTotalsResolver,
-         DistrictTotalsResolver,
-         StateNumbersResolver } from './shared/model/resolver/data.resolver';
+import {
+  StateTotalsResolver,
+  CountyTotalsResolver,
+  DistrictTotalsResolver,
+  StateNumbersResolver,
+  ElectedModelResolver
+} from './shared/model/resolver/data.resolver';
 import { LoginComponent } from './admin/login/login.component';
 import { LandingComponent } from './site/landing/landing.component';
 import { BackOfficeComponent } from './admin/backoffice/backoffice.component';
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
       stateTotals: StateTotalsResolver,
       countyTotals: CountyTotalsResolver,
       districtTotals: DistrictTotalsResolver,
-      stateNumbers: StateNumbersResolver
+      stateNumbers: StateNumbersResolver,
+      elected: ElectedModelResolver
     },
     children: [
       { path: '', component: LandingComponent,
@@ -75,7 +79,8 @@ const appRoutes: Routes = [
     ChapterModelResolver,
     StatesGeoJsonResolver,
     CountiesGeoJsonResolver,
-    DistrictsGeoJsonResolver
+    DistrictsGeoJsonResolver,
+    ElectedModelResolver
   ]
 })
 export class AppRoutingModule {

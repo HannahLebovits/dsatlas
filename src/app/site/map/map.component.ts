@@ -7,6 +7,7 @@ import { ColorMapService } from '../../shared/color-map.service';
 import { InfoBoxService } from '../../shared/info-box.service';
 import { LegendService } from '../../shared/legend.service';
 import { MarkerService } from '../../shared/marker.service';
+import { ElectedModel } from '../../shared/model/elected.model';
 
 @Component({
   selector: 'app-map',
@@ -17,13 +18,15 @@ export class MapComponent implements OnInit {
   dsamap;
 
   chapters: ChapterModel[];
+  elected: ElectedModel[];
   totals = {};
   geojsons = {};
   stateNumbers = {};
   layers = [];
   infoBoxes = [];
   legends = [];
-  markers;
+  chapterMarkers;
+  electedMarkers;
   chaptersPerState = {};
   queried: boolean;
   off;
@@ -115,18 +118,20 @@ export class MapComponent implements OnInit {
       'Off': this.off
     };
     const overlays = {
-      'DSA Chapters': this.markers
+      'DSA Chapters': this.chapterMarkers,
+      'Elected Members': this.electedMarkers
     };
     L.control.layers(baseLayers, overlays).addTo(this.dsamap);
 
     this.dsamap.addLayer(this.queried ? this.off : this.layers['states']);
-    this.dsamap.addLayer(this.markers);
+    this.dsamap.addLayer(this.chapterMarkers);
     this.dsamap.on({
       baselayerchange: (e) => this.toggleInfoBox(e) });
   }
 
   getMarkers() {
-    this.markers = this._markerService.populateChapterMarkers(this.dsamap, this.chapters);
+    this.chapterMarkers = this._markerService.populateChapterMarkers(this.dsamap, this.chapters);
+    this.electedMarkers = this._markerService.populateElectedMarkers(this.dsamap, this.elected);
   }
 
   toggleInfoBox(e) {
@@ -167,6 +172,7 @@ export class MapComponent implements OnInit {
     }
 
     this.chapters = this._route.snapshot.parent.data[ 'chapters' ];
+    this.elected = this._route.snapshot.parent.data[ 'elected' ];
 
     this.geojsons[ 'states' ] = this._route.snapshot.parent.data[ 'statesGeoJson' ] as L.GeoJSON;
     this.geojsons[ 'counties' ] = this._route.snapshot.parent.data[ 'countiesGeoJson' ] as L.GeoJSON;

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ToastrService } from 'ngx-toastr';
+import { ElectedModel } from './model/elected.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,28 +18,39 @@ export class DataService {
   chapters$: Observable<ChapterModel[]>;
   selected$: Observable<ChapterModel>;
   editing$: Observable<boolean>;
+  elected$: Observable<ElectedModel[]>;
 
   private _chapters: BehaviorSubject<ChapterModel[]>;
   private _selected: BehaviorSubject<ChapterModel>;
+  private _elected: BehaviorSubject<ElectedModel[]>;
   private _editing: BehaviorSubject<boolean>;
 
   private _headers = new HttpHeaders().append('Content-Type', 'application/json; charset=utf-8');
-  private _dataStore: { chapters: ChapterModel[] };
+  private _dataStore: { chapters: ChapterModel[], elected: ElectedModel[] };
   private _newChapter: ChapterModel;
 
   constructor(private _toastr: ToastrService, private _http: HttpClient) {
-    this._dataStore = { chapters: [] };
+    this._dataStore = { chapters: [], elected: [] };
+
     this._chapters = <BehaviorSubject<ChapterModel[]>>new BehaviorSubject([]);
     this._selected = <BehaviorSubject<ChapterModel>>new BehaviorSubject<ChapterModel>(new ChapterModel({}));
+    this._elected = <BehaviorSubject<ElectedModel[]>>new BehaviorSubject([]);
     this._editing = <BehaviorSubject<boolean>>new BehaviorSubject<boolean>(false);
+
     this.selected$ = this._selected.asObservable();
     this.chapters$ = this._chapters.asObservable();
     this.editing$ = this._editing.asObservable();
+    this.elected$ = this._elected.asObservable();
   }
 
   setChapters(chapters: ChapterModel[]) {
     this._dataStore.chapters = chapters;
     this._chapters.next(Object.assign({}, this._dataStore).chapters);
+  }
+
+  setElected(elected: ElectedModel[]) {
+    this._dataStore.elected = elected;
+    this._elected.next(Object.assign({}, this._dataStore).elected);
   }
 
   deleteChapter(id: string) {
@@ -121,6 +133,10 @@ export class DataService {
 
   getStateNumbers(): any {
     return this._http.get<any>(`/api/statenumbers`);
+  }
+
+  getElected(): any {
+    return this._http.get<any>(`/api/elected`);
   }
 
   sendEmail(data): any {

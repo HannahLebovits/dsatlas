@@ -21,6 +21,7 @@ app.set('view engine', 'pug');
 // configuration =================
 var creds = config.get('mongo.prod');
 
+/*
 var mongoUrl = function(user, pass) {
   return 'mongodb://' + user +
     ':' + pass +
@@ -28,8 +29,10 @@ var mongoUrl = function(user, pass) {
     ':' + creds.port +
     '/' + creds.db;
 };
+*/
+var mongoUrl = "mongodb://127.0.0.1:27017/dsatlas";
 
-mongoose.connect(mongoUrl(creds.user, creds.pass))
+mongoose.connect(mongoUrl)
   .then()
   .catch(function(err) { console.log(err); });
 
@@ -123,19 +126,21 @@ app.get('/api/statenumbers', function(req,res) {
   });
 });
 
-app.post('/api/chapters/update', function(req,res) {
-//  mongoose.connect(mongoUrl('dsatlas', 'DPkcKMuXn6bNA4k948fmxh4FR2VzDv'))
-//    .then( function() {
-      var update = new Chapter(req.body);
+app.get('/api/elected', function(req,res) {
+  fs.readFile(__dirname + '/dist/assets/data/const/elected.json', 'utf8', function(err,data) {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
 
+app.post('/api/chapters/update', function(req,res) {
+      var update = new Chapter(req.body);
       Chapter.findByIdAndUpdate(update._id, update, {'new': true, 'upsert': true})
         .exec(function (err, result) {
           if (err) throw err;
+          console.log(result);
           res.send(result);
         });
-
-//    })
-//    .catch(function(err) { console.log(err); });
 });
 
 app.delete('/api/chapters/:id', function(req,res) {

@@ -26,7 +26,23 @@ export class PopupService {
     return '<div><a href="tel:' + tel + '"><i class="fa fa-phone"></i> ' + this._phonePipe.transform(tel) + '</a></div>';
   }
 
-  makePopup(d) {
+  makeElectedPopup(d) {
+    let p = '';
+    if (d.member) {
+      p += '<span class="badge badge-pill badge-danger">DSA Member</span>';
+    } else {
+      p += '<span class="badge badge-pill badge-secondary">DSA Endorsed</span>';
+    }
+    p += `<div class="popup-container"><h3>${d.name}</h3>
+        <div class="popup-body">
+        <div>${d.position}</div>
+        <div>${d.city}, ${d.state}</div>
+        </div>
+      </div>
+      `;
+    return p;
+  }
+  makeChapterPopup(d) {
     let p =
       '<div class="popup-container"><h3>' + d.name + '</h3>' +
       '<div class="popup-body">';
@@ -44,7 +60,7 @@ export class PopupService {
     if (d.email) { p += this.emailLink(d.email); }
     if (d.tel) { p += this.telLink(d.tel); }
 
-    p += '</div>';
+    p += '</div></div>';
 
     return p;
   }
