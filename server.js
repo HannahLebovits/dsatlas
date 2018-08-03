@@ -18,24 +18,6 @@ mailer.extend(app, config.get('mail.prod'));
 app.set('views', __dirname + '/dist/config/pug');
 app.set('view engine', 'pug');
 
-// configuration =================
-var creds = config.get('mongo.prod');
-
-/*
-var mongoUrl = function(user, pass) {
-  return 'mongodb://' + user +
-    ':' + pass +
-    '@' + creds.host +
-    ':' + creds.port +
-    '/' + creds.db;
-};
-*/
-var mongoUrl = "mongodb://127.0.0.1:27017/dsatlas";
-
-mongoose.connect(mongoUrl)
-  .then()
-  .catch(function(err) { console.log(err); });
-
 app.use(express.static(path.join(__dirname,"dist")));
 app.use(morgan('dev'));
 app.use(bodyParser.json());

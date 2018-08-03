@@ -13,3 +13,4 @@ config/
 package-lock.json
 checkstyle.xml
 dist/
+server/serviceAccountKey.json
